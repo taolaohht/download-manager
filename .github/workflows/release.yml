@@ -74,7 +74,8 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force out | Out-Null
           Get-ChildItem artifacts -Filter *.zip -Recurse | Copy-Item -Destination out
-          py -3 scripts/make-latest-json.py artifacts "$env:GITHUB_REF_NAME" docs/RELEASE_NOTES.md | Set-Content -Encoding utf8 out/latest.json
+          $manifest = py -3 scripts/make-latest-json.py artifacts "$env:GITHUB_REF_NAME" docs/RELEASE_NOTES.md
+          [System.IO.File]::WriteAllText("out/latest.json", ($manifest -join [Environment]::NewLine), [System.Text.UTF8Encoding]::new($false))
           $checksums = Get-ChildItem out -Filter *.zip | ForEach-Object {
             $hash = (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower()
             "$hash  $($_.Name)"
