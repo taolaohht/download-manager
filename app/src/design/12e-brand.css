@@ -1,0 +1,26 @@
+/* 12e downloader brand accent. Kept in a small override layer so upstream
+   design tokens remain easy to maintain while the product gets its own palette. */
+:root,
+[data-accent="12e"],
+[data-accent="prism"] {
+  --accent: #c7a6ff;
+  --accent-rgb: 171 126 255;
+  --accent-solid: #7650c8;
+  --accent-solid-hover: #8660d8;
+  --accent-contrast: #ffffff;
+  --accent-2: #e2b9ff;
+}
+
+[data-theme="light"][data-accent="12e"],
+[data-theme="light"][data-accent="prism"],
+[data-theme="light"]:not([data-accent]) {
+  --accent: #6841b1;
+  --accent-rgb: 104 65 177;
+  --accent-solid: #6841b1;
+  --accent-solid-hover: #59369c;
+  --accent-contrast: #ffffff;
+  --accent-2: #8d5ed0;
+}
+
+/* The original multi-colour connection visualization is functional UI, not a
+   product logo; retain its status colours without tying the product identity to it. */

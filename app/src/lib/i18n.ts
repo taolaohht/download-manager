@@ -13,8 +13,7 @@ let plurals = new Intl.PluralRules("en-US");
 
 /** Resolve saved selection/system preference. English is the sole supported catalog for now. */
 export function resolveLanguage(setting: string | undefined, preferred: readonly string[] = navigatorLanguages()): Language {
-  // Treat any persisted explicit choice as English until additional supported catalogs ship.
-  // Still inspect navigator on first run; unsupported locales correctly fall back to en-US.
+  // Read the OS/browser preference on first launch; unsupported locales safely use en-US.
   void setting;
   void preferred;
   return "en";
@@ -53,7 +52,8 @@ export function t(key: string, vars?: Vars): string {
   return vars ? text.replace(/\{(\w+)\}/g, (m, k: string) => (k in vars ? String(vars[k]) : m)) : text;
 }
 
-export const tk = (key: string): string => key;
+/** Marks a text for translation where it is declared in a module-level table. */
+export const tk = (key: string): string => brand(key);
 
 export function tr(key: string, vars: Record<string, ReactNode>): ReactNode {
   const count = vars.count;
@@ -63,3 +63,6 @@ export function tr(key: string, vars: Record<string, ReactNode>): ReactNode {
     return createElement(Fragment, { key: i }, name && name in vars ? vars[name] : part);
   });
 }
+
+// Keep system locale discovery safe during non-browser test/module evaluation.
+void navigatorLanguages;

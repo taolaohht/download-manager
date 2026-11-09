@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { LANGUAGES, resolveLanguage, setLanguage, t, tr } from "./i18n";
+import { LANGUAGES, resolveLanguage, setLanguage, t, tk, tr } from "./i18n";
 
 describe("English-only localization", () => {
   it("exposes only English (United States) and safely falls back for system locales", () => {
@@ -14,8 +14,9 @@ describe("English-only localization", () => {
     expect(document.documentElement.dir).toBe("ltr");
   });
 
-  it("keeps interpolation, plural forms, and branded product text", () => {
+  it("keeps interpolation, plural forms, and replaces upstream product text", () => {
     expect(t("Open Prism")).toBe("Open 12e downloader");
+    expect(tk("About Prism")).toBe("About 12e downloader");
     expect(t("{count} files", { count: 2 })).toBe("2 files");
     expect(t("{count} files", { count: 1 })).toBe("1 file");
   });
