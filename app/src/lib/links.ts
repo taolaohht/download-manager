@@ -1,8 +1,8 @@
-// Web links: opened in the user's browser (a new tab in the browser preview).
+// External links opened in the user's browser.
 
 import { inTauri } from "./api";
 
-/** 12e downloader repository. */
+/** This fork's source repository. */
 export const REPO_URL = "https://github.com/taolaohht/download-manager";
 
 export async function openUrl(url: string) {
