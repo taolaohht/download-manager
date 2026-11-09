@@ -2,7 +2,7 @@
 
 A fast, open-source download manager with browser integration and video downloads.
 
-> **Current distribution:** This repository publishes Prism only as a **Windows 10/11 x64 portable ZIP**. Linux and macOS desktop builds are no longer produced or supported here. Older release notes below are historical.
+> **Current distribution:** This repository publishes Prism only as a **Windows 10/11 x64 portable ZIP**. Linux and macOS desktop builds are no longer produced or supported here. Older platform-specific notes below are historical.
 
 ## What's new in 1.2.4
 
@@ -78,13 +78,21 @@ A fast, open-source download manager with browser integration and video download
 
 * **Convert and make smaller.** A new *Tools* section in the sidebar, *Convert to* and *Make
   smaller* in a finished download's menu, and two buttons in the *Download complete* window.
-  * **Convert** pictures (also iPhone HEIC photos), music and videos to common formats.
-  * **Make smaller** pictures, music and videos to fit common sharing limits.
-  * The new file is saved next to the original, which stays as it is.
+  * **Convert** pictures (also iPhone HEIC photos), music and videos: MP3, WAV, FLAC, M4A, JPG,
+    PNG, WebP, MP4, WebM, GIF for short clips, or just the sound of a video as MP3. Several files
+    at once can also be packed into a ZIP.
+  * **Make smaller** pictures, music and videos to fit Discord (20 MB), e-mail (25 MB), WhatsApp
+    (16 MB) or a size you choose. Before it starts, Prism shows the resulting size, resolution and
+    quality, and says so when a file is too long to look good at that size. The result is checked
+    and made again smaller if it came out too big.
+  * The new file is saved next to the original, which stays as it is. Prism uses its own ffmpeg
+    (downloaded on first use, like for videos).
 * **Just a part of a video.** In the *Download video* window, choose *Only a part* and pick the
-  start and end with the two handles or by typing the times, or click a chapter.
+  start and end with the two handles or by typing the times, or click a chapter. Prism downloads
+  only that part, cut exactly, as a video or as MP3.
 * **What's inside a ZIP.** The *Download file* window shows the folders and files in a ZIP before
-  you download it.
+  you download it, reading only a few kilobytes from its end. One file can be downloaded on its
+  own, without the rest of the archive.
 * **Finished downloads show as finished**
   ([#41](https://github.com/FortoGraphy/prism-download-manager/issues/41)): a download that
   finished while the window was open could still look like it was downloading until the window was
@@ -93,6 +101,66 @@ A fast, open-source download manager with browser integration and video download
 * Cancelling a download and deleting its file is quicker: Prism no longer writes the file to disk
   first.
 * The Chrome Web Store extension (1.1.0) keeps working as it is; nothing to update there.
+
+### Prism 1.1.8
+
+* Lists of links open once ([#37](https://github.com/FortoGraphy/prism-download-manager/issues/37)),
+  Linux: WebKit's previous renderer against empty windows on KDE Plasma and memory given back after
+  long downloads ([#36](https://github.com/FortoGraphy/prism-download-manager/issues/36),
+  [#40](https://github.com/FortoGraphy/prism-download-manager/issues/40)), and *Hide the Dock icon*
+  on the Mac ([#34](https://github.com/FortoGraphy/prism-download-manager/issues/34)).
+
+### Prism 1.1.7
+
+* AI models from Hugging Face ([#29](https://github.com/FortoGraphy/prism-download-manager/issues/29)),
+  Turkish ([#31](https://github.com/FortoGraphy/prism-download-manager/issues/31)), Linux windows
+  shown on creation ([#30](https://github.com/FortoGraphy/prism-download-manager/issues/30)), and a
+  window background that matches the theme.
+
+### Prism 1.1.6
+
+* The light theme is fully light on Windows
+  ([#21](https://github.com/FortoGraphy/prism-download-manager/issues/21)); Brave Origin connects on
+  Linux and macOS; VK videos ([#25](https://github.com/FortoGraphy/prism-download-manager/issues/25));
+  YouTube while signed in ([#23](https://github.com/FortoGraphy/prism-download-manager/pull/23)); the
+  Firefox Add-ons ID.
+
+### Prism 1.1.5
+
+* Links to .torrent files open *Add torrent* instead of failing
+  ([#20](https://github.com/FortoGraphy/prism-download-manager/issues/20)).
+
+### Prism 1.1.4
+
+* The window opens again on Linux
+  ([#18](https://github.com/FortoGraphy/prism-download-manager/issues/18)).
+* Lighter in the tray ([#11](https://github.com/FortoGraphy/prism-download-manager/issues/11)):
+  after a minute there, Prism closes its window to free the web view's memory.
+* Compact view (Settings › Appearance); magnet links and .torrent files open in Prism on Linux;
+  with *Close button hides to the tray* off, the close button quits Prism.
+
+### Prism 1.1.3
+
+* Downloads from sites with a robot check (like softpedia.com) are left to the browser
+  ([#14](https://github.com/FortoGraphy/prism-download-manager/issues/14)), and an error page is
+  never saved as your file.
+* *Remove downloads whose files were deleted* (Settings › General, off by default).
+
+### Prism 1.1.2
+
+* Arabic (the whole window mirrored right to left) and Indonesian: 8 languages now.
+* Copied links without popups: turn off *Ask before adding copied links* in Settings › General.
+* A fuller torrent window (category, queue, free space) and *Delete with files* asking once.
+
+### Prism 1.1.1
+
+* Czech, German, Spanish, French and Italian, besides English; Prism follows your system's
+  language (Settings › General › Language).
+* The portable version finds the browser extension again
+  ([#12](https://github.com/FortoGraphy/prism-download-manager/issues/12)); torrents with several
+  files get their own folder; Start minimized and starting with the computer keep Prism in the
+  tray; Zen and Firefox with new profiles connect on Linux; the rpm works with RPM Fusion's ffmpeg
+  ([#10](https://github.com/FortoGraphy/prism-download-manager/issues/10)).
 
 ## Downloads
 
@@ -127,8 +195,9 @@ Browser extension: [Chrome Web Store](https://chromewebstore.google.com/detail/p
 
 ## Known limitations
 
+* The portable ZIP is not code-signed with a Windows Authenticode certificate. Windows SmartScreen may show a warning; download only from the official GitHub release.
 * Firefox: Prism isn't in Firefox Add-ons yet. Its extension is loaded by hand, and Firefox
   keeps unsigned add-ons only until restart, except in Developer Edition / Nightly / ESR.
 
-Found a bug? [Open an issue](https://github.com/taolaohht/download-manager/issues/new/choose).
+Found a bug? [Open an issue](https://github.com/FortoGraphy/prism-download-manager/issues/new/choose).
 Like Prism? A ⭐ helps a lot.
