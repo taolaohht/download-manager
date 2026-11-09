@@ -72,6 +72,6 @@ jobs:
       - name: Build native messaging host
         run: cargo build -p prism-native-host --release
       - name: Install Playwright Chromium
-        run: ./extension/node_modules/.bin/playwright install chromium
+        run: npx --prefix extension playwright install chromium
       - name: Run extension E2E
         run: npm run e2e --prefix extension
