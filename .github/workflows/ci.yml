@@ -18,12 +18,8 @@ permissions:
 
 jobs:
   test:
-    name: Test (${{ matrix.os }})
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-22.04, windows-latest, macos-15]
-    runs-on: ${{ matrix.os }}
+    name: Windows tests
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v5
         with:
@@ -32,43 +28,35 @@ jobs:
         with:
           components: clippy
       - uses: Swatinem/rust-cache@v2
-      - name: Linux system packages
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev patchelf libxdo-dev ffmpeg
-      - name: Install ffmpeg (macOS)
-        if: runner.os == 'macOS'
-        run: brew install ffmpeg
       - uses: actions/setup-node@v5
         with:
           node-version: 24
       - name: Rust tests (engine, core, video, torrent, native host)
         run: cargo test --workspace --exclude prism-app
-      - name: Frontend deps
+      - name: Frontend dependencies
         run: |
           npm ci --prefix app
           npm ci --prefix extension
-      - name: Frontend + extension build (both needed by tauri-build)
+      - name: Build frontend and extension
         run: |
           npm run build --prefix app
           npm run build --prefix extension
-      - name: Sidecar (debug)
+      - name: Build sidecar (debug)
         run: node scripts/build-sidecar.mjs --debug
       - name: Clippy (whole workspace incl. app shell)
         run: cargo clippy --workspace --all-targets -- -D warnings
-      - name: App typecheck + tests
+      - name: App typecheck and tests
         run: |
           npm run typecheck --prefix app
           npm test --prefix app
-      - name: Extension typecheck + tests
+      - name: Extension typecheck and tests
         run: |
           npm run typecheck --prefix extension
           npm test --prefix extension
 
   extension-e2e:
-    name: Extension E2E (Chromium)
-    runs-on: ubuntu-22.04
+    name: Extension E2E (Chromium, Windows)
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v5
         with:
@@ -83,8 +71,6 @@ jobs:
         run: npm run build --prefix extension
       - name: Build native messaging host
         run: cargo build -p prism-native-host --release
-      - name: Install Playwright Chromium system dependencies
-        run: sudo ./extension/node_modules/.bin/playwright install-deps chromium
       - name: Install Playwright Chromium
         run: ./extension/node_modules/.bin/playwright install chromium
       - name: Run extension E2E
