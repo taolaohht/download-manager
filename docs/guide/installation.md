@@ -2,7 +2,7 @@
 
 Prism is released as a **Windows 10/11 x64 portable ZIP only**.
 
-1. Download the ZIP from the [latest release](https://github.com/FortoGraphy/prism-download-manager/releases/latest).
+1. Download the ZIP from the [latest release](https://github.com/taolaohht/download-manager/releases/latest).
 2. Extract it to any folder, including a USB drive.
 3. Run `prism.exe`.
 
