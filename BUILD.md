@@ -27,7 +27,6 @@ npm ci --prefix extension
 ```powershell
 cargo test --workspace --exclude prism-app
 cargo clippy --workspace --all-targets -- -D warnings
-npm run build --prefix app
 npm run build --prefix extension
 npm test --prefix app
 npm run typecheck --prefix app
@@ -39,10 +38,13 @@ npm run e2e --prefix extension
 ## Build the portable release
 
 ```powershell
-npm run build --prefix app
+npm ci --prefix app
+npm ci --prefix extension
 npm run build --prefix extension
 node scripts/build-sidecar.mjs --target x86_64-pc-windows-msvc
-cargo build -p prism-app --release --target x86_64-pc-windows-msvc
+cd app
+npx tauri build --target x86_64-pc-windows-msvc --no-bundle
+cd ..
 ./scripts/make-portable.ps1 -Target x86_64-pc-windows-msvc
 ```
 
