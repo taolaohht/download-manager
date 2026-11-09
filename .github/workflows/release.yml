@@ -45,7 +45,7 @@ jobs:
         run: |
           $version = (Get-Content app/src-tauri/tauri.conf.json | ConvertFrom-Json).version
           $zip = "packaging/out/Prism-$version-windows-x64-portable.zip"
-          npx --prefix app tauri signer sign $zip
+          npx --prefix app tauri signer sign --app-version $version $zip
       - uses: actions/upload-artifact@v5
         with:
           name: prism-windows-x64-portable
