@@ -27,14 +27,13 @@ jobs:
         run: |
           npm ci --prefix app
           npm ci --prefix extension
-      - name: Build app frontend
-        run: npm run build --prefix app
       - name: Build browser extensions
         run: npm run build --prefix extension
       - name: Build Windows native messaging host
         run: node scripts/build-sidecar.mjs --target x86_64-pc-windows-msvc
-      - name: Build Windows app executable (no installer)
-        run: cargo build -p prism-app --release --target x86_64-pc-windows-msvc
+      - name: Build Windows app executable (without installer)
+        working-directory: app
+        run: npx tauri build --target x86_64-pc-windows-msvc --no-bundle
       - name: Create portable ZIP
         shell: pwsh
         run: ./scripts/make-portable.ps1 -Target x86_64-pc-windows-msvc
