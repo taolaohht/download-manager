@@ -1,20 +1,22 @@
 # 12e downloader productization status
 
-This fork is being branded as **12e downloader** by 12ecember while retaining the upstream Rust download engine, browser bridge, yt-dlp/video pipeline, and torrent implementation.
+This fork is being branded as **12e downloader** by 12ecember while retaining the upstream Rust download engine, browser bridge, yt-dlp/video pipeline, torrent implementation, and working Windows portable-data marker.
 
-## Foundation changes
+## Landed foundation
 
-- Product/window metadata and HTML document title use 12e downloader.
-- The in-app mark is a simple download symbol rather than the upstream Prism mark.
-- The localization API currently exposes only English (United States); unsupported system locales fall back to en-US.
-- Release update metadata points at this repository rather than the upstream project's releases. A release must be signed with a 12ecember-controlled updater key before enabling distribution updates; the inherited public key does not establish that trust chain.
+- Product/window metadata, HTML title, tray labels, and app mark use 12e downloader branding.
+- Localization currently exposes English (United States) only; unsupported system locales fall back to English.
+- Windows portable archive naming/readme now use 12e downloader and keep app data beside the executable.
+- The executable/native host protocol identifiers remain compatible for this transition. Do not rename those until the extension, host registration, installer hooks, and migration paths are changed together.
+- Updater metadata points to this repository, but it must not be used for releases until a 12ecember-controlled signing key and release pipeline are configured.
 
-## Remaining work before claiming the full product requirements
+## Remaining product work
 
-- Remove unsupported feature families end-to-end (scheduler, site grabber, AI/Hugging Face, media conversion/tools, and antivirus), after checking shared code and dependencies.
-- Replace remaining Prism references in visible UI, tray, native-host protocol, extension copy, and packaging; update binary/sidecar identifiers in a coordinated migration.
-- Set and test the queue concurrency defaults and limits, including crash/restart recovery for regular and torrent downloads.
-- Implement portable data-root behavior and configuration backup/restore, and verify autostart remains opt-in.
-- Rebuild branded application and browser extension icons, then run frontend/Rust tests, security/license checks, and Windows 10/11 portable smoke tests.
+- Remove scheduler, site grabber, AI/Hugging Face, media conversion/tools, and antivirus from UI, Tauri commands, Rust core, dependencies, and window routes only after checking shared code and tests.
+- Set opt-in startup behavior in the persisted Rust default settings and shell startup path; existing user preferences must remain respected.
+- Finish the 12e accent theme and replace Prism references from all visible UI, extension, tray icons, app icons, docs, and remaining packaging text.
+- Verify language selection remains persisted; with the current one-language release, settings should present English (United States) and system fallback only.
+- Test queue concurrency rules, abrupt-close recovery, torrent resume, browser capture fail-open behavior, backup/restore, and portable data on Windows 10/11.
+- Run frontend/Rust tests, dependency/security/license checks, and portable smoke tests before release.
 
-Do not remove the shared video, torrent, download-engine, or native-messaging components while pruning unrelated modules.
+Do not remove shared download-engine, video, torrent, or native-messaging code while pruning unrelated modules.
