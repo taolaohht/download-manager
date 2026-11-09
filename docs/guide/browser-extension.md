@@ -50,7 +50,7 @@ Firefox only keeps unsigned extensions until it restarts, so choose one of:
 * **Try it now (until restart):** open **`about:debugging#/runtime/this-firefox`** →
   **Load Temporary Add-on…** → pick `manifest.json` inside the **`firefox`** folder. Prism →
   Settings → Browser integration shows the folder (it's also in `prism-firefox.zip` on the
-  [latest release](https://github.com/FortoGraphy/prism-download-manager/releases/latest)).
+  [latest release](https://github.com/taolaohht/download-manager/releases/latest)).
 * **Permanent (Firefox Developer Edition / Nightly / ESR):** open `about:config`, set
   `xpinstall.signatures.required` to `false`, then open `about:addons` → gear icon →
   **Install Add-on From File…** → pick `prism-firefox.zip`.
@@ -70,12 +70,12 @@ grab downloads before Prism sees them.
 | No **Download video** button | Hover the video; check *Show video button* in the extension options; reload the page after installing. |
 | The store says Prism is already added, but it's the old copy | Remove the copy you added by hand (see *Added Prism by hand before?*), then add it from the store. |
 | "Extension ID" mismatch in Browser integration | You loaded a modified copy — use the store version; its ID is `mmcdeiglkbfbicdjboocmhehodogilfl`. |
-| Linux Flatpak/Snap browsers | Flatpak browsers can't run native helpers (browser limitation). Snap Firefox asks for permission once. Use a deb/rpm browser for full integration. |
+
 
 ## Adding it by hand instead
 
 Rather not use the store? Download `prism-chromium.zip` from the
-[latest release](https://github.com/FortoGraphy/prism-download-manager/releases/latest) (or
+[latest release](https://github.com/taolaohht/download-manager/releases/latest) (or
 build it with `npm run build --prefix extension`), unzip it into a folder that stays, then on
 the browser's extensions page turn on **Developer mode** → **Load unpacked** → that folder.
 Prism → Settings → Browser integration → *Add it by hand instead* walks you through it with
