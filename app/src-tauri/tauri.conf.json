@@ -36,15 +36,7 @@
   },
   "bundle": {
     "active": true,
-    "targets": [
-      "nsis",
-      "msi",
-      "deb",
-      "rpm",
-      "appimage",
-      "app",
-      "dmg"
-    ],
+    "targets": ["nsis"],
     "publisher": "Prism",
     "copyright": "Personal use",
     "category": "Utility",
@@ -57,14 +49,10 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "externalBin": [
-      "binaries/prism-native-host"
-    ],
+    "externalBin": ["binaries/prism-native-host"],
     "fileAssociations": [
       {
-        "ext": [
-          "torrent"
-        ],
+        "ext": ["torrent"],
         "name": "BitTorrent file",
         "description": "BitTorrent metadata file",
         "mimeType": "application/x-bittorrent",
@@ -78,45 +66,14 @@
         "displayLanguageSelector": false
       },
       "wix": {
-        "fragmentPaths": [
-          "../../packaging/windows/native-host.wxs"
-        ],
-        "componentRefs": [
-          "PrismNativeHostRegistration"
-        ]
+        "fragmentPaths": ["../../packaging/windows/native-host.wxs"],
+        "componentRefs": ["PrismNativeHostRegistration"]
       }
-    },
-    "linux": {
-      "deb": {
-        "depends": [
-          "ffmpeg"
-        ],
-        "files": {},
-        "desktopTemplate": "../../packaging/linux/prism.desktop",
-        "postInstallScript": "../../packaging/linux/postinst.sh",
-        "preRemoveScript": "../../packaging/linux/prerm.sh"
-      },
-      "rpm": {
-        "depends": [
-          "/usr/bin/ffmpeg"
-        ],
-        "desktopTemplate": "../../packaging/linux/prism.desktop",
-        "postInstallScript": "../../packaging/linux/postinst.sh",
-        "preRemoveScript": "../../packaging/linux/prerm.sh"
-      },
-      "appimage": {
-        "bundleMediaFramework": false
-      }
-    },
-    "macOS": {
-      "minimumSystemVersion": "11.0",
-      "entitlements": "../../packaging/macos/entitlements.plist",
-      "signingIdentity": "-"
     },
     "resources": {
       "../../extension/build/chromium/": "extension/chromium/",
       "../../extension/build/firefox/": "extension/firefox/",
-      "../../packaging/linux/README-extension.txt": "extension/README.txt"
+      "../../packaging/windows/PORTABLE-README.txt": "extension/README.txt"
     }
   },
   "plugins": {
