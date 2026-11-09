@@ -84,8 +84,8 @@ jobs:
       - name: Build native messaging host
         run: cargo build -p prism-native-host --release
       - name: Install Playwright Chromium system dependencies
-        run: sudo npx --prefix extension playwright install-deps chromium
+        run: sudo ./extension/node_modules/.bin/playwright install-deps chromium
       - name: Install Playwright Chromium
-        run: npx --prefix extension playwright install chromium
+        run: ./extension/node_modules/.bin/playwright install chromium
       - name: Run extension E2E
         run: npm run e2e --prefix extension
