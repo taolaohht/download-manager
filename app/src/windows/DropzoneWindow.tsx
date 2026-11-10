@@ -7,7 +7,7 @@ import { t } from "../lib/i18n";
 import { attempt } from "../lib/ui";
 import { handleDrop } from "../lib/drop";
 
-/** Floating drop target: drag links or .torrent files onto the orb. Double-click opens Prism. */
+/** Floating drop target: drag links or .torrent files onto the orb. Double-click opens 12e Downloader. */
 export default function DropzoneWindow() {
   const [over, setOver] = useState(false);
   const [flash, setFlash] = useState(false);
@@ -23,8 +23,8 @@ export default function DropzoneWindow() {
         data-tauri-drag-region
         role="button"
         tabIndex={0}
-        aria-label={t("Drop links here to download. Double-click to open Prism.")}
-        data-tip={t("Drop links here · double-click opens Prism")}
+        aria-label={t("Drop links here to download. Double-click to open 12e Downloader.")}
+        data-tip={t("Drop links here · double-click opens 12e Downloader")}
         onDoubleClick={() => void attempt(api.showMain())}
         onDragOver={(e) => {
           e.preventDefault();
