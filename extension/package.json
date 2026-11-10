@@ -2,7 +2,7 @@
   "name": "12e-downloader-extension",
   "version": "1.2.4",
   "private": true,
-  "description": "12e Downloader browser integration (Chromium MV3 + Firefox MV3)",
+  "description": "12e downloader browser integration (Chromium MV3 + Firefox MV3)",
   "license": "MIT",
   "type": "module",
   "scripts": {
