@@ -14,7 +14,7 @@ New-Item -ItemType Directory -Force $stage | Out-Null
 Copy-Item (Join-Path $release "12e-downloader.exe") $stage
 Copy-Item (Join-Path $root "app\src-tauri\binaries\12e-native-host-$Target.exe") (Join-Path $stage "12e-native-host.exe")
 # portable.txt switches the data directory to .\data next to 12e-downloader.exe
-Set-Content -Path (Join-Path $stage "portable.txt") -Value "Prism portable mode: settings and history are stored in the data folder next to 12e-downloader.exe." -Encoding utf8
+Set-Content -Path (Join-Path $stage "portable.txt") -Value "12e Downloader portable mode: settings and history are stored in the data folder next to 12e-downloader.exe." -Encoding utf8
 $ext = Join-Path $root "extension\build"
 if (Test-Path $ext) {
   New-Item -ItemType Directory -Force (Join-Path $stage "extension") | Out-Null
