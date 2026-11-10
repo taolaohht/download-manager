@@ -2,11 +2,7 @@
 
 /** Compact 12e wordmark used by the browser extension. */
 export function brandMark(size = 18): string {
-  return '<svg class="brand-mark" width="' + size + '" height="' + size + '" viewBox="0 0 32 32" fill="none" aria-hidden="true">' +
-    '<rect x="1" y="1" width="30" height="30" rx="9" fill="#17172b" stroke="#7775ff" stroke-opacity=".7"/>' +
-    '<path d="M7 10h5v12H7z" fill="#a5a3ff"/><path d="M16 10h5v12h-5z" fill="#fff"/>' +
-    '<path d="M23 10h3v3h-3zM23 16h3v6h-3z" fill="#a5a3ff"/>' +
-  '</svg>';
+  return '<img class="brand-mark" src="icons/icon-128.png" width="' + size + '" height="' + size + '" alt="">';
 }
 const s = (body: string, size = 16) =>
   `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
