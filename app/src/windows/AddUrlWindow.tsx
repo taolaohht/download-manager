@@ -31,9 +31,9 @@ export default function AddUrlWindow() {
   }, []);
 
   const trimmed = url.trim();
-  const model = /^(datasets\\/)?[A-Za-z0-9][\\w-]*\\/[\\w.-]+$/.test(trimmed);
+  const model = /^(datasets\/)?[A-Za-z0-9][\w-]*\/[\w.-]+$/.test(trimmed);
   const torrent = isTorrentLink(trimmed);
-  const valid = source === "torrent" ? torrent || /^https?:\\/\\//i.test(trimmed) : source === "video" ? /^https?:\\/\\//i.test(trimmed) : model || looksLikeUrl(trimmed) || /^ftps?:\\/\\//i.test(trimmed);
+  const valid = source === "torrent" ? torrent || /^https?:\/\//i.test(trimmed) : source === "video" ? /^https?:\/\//i.test(trimmed) : model || looksLikeUrl(trimmed) || /^ftps?:\\/\\//i.test(trimmed);
 
   const choose = (next: Source) => {
     setSource(next);
