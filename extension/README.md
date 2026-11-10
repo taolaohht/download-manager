@@ -1,4 +1,4 @@
-# Prism browser extension
+# 12e Downloader browser extension
 
 One TypeScript source, two Manifest V3 builds:
 
@@ -14,7 +14,7 @@ One TypeScript source, two Manifest V3 builds:
 
 ```
 npm install
-npm run build        # build/chromium, build/firefox, build/prism-chromium.zip, build/prism-firefox.zip
+npm run build        # build/chromium, build/firefox, build/12e-downloader-chromium.zip, build/12e-downloader-firefox.zip
 npm run build:dev    # unminified + inline source maps
 npm run typecheck    # tsc --noEmit (strict)
 npm test             # vitest: rules, media classification, cookies, correlation, NativeClient
@@ -25,17 +25,17 @@ Install for development:
 
 1. Build the host: `cargo build -p prism-native-host --release`.
 2. Register it: `target/release/prism-native-host register` (all browsers; per-user, no admin).
-   The Prism app does this itself on every start / from *Settings › Browser integration › Repair*.
+   The 12e Downloader app does this itself on every start / from *Settings › Browser integration › Repair*.
 3. Chromium-family: `chrome://extensions` → Developer mode → *Load unpacked* → `extension/build/chromium`.
    Firefox: `about:debugging#/runtime/this-firefox` → *Load Temporary Add-on* → `extension/build/firefox/manifest.json`
-   (or install `prism-firefox.zip` in Developer Edition/Nightly with signing disabled).
+   (or install `12e-downloader-firefox.zip` in Developer Edition/Nightly with signing disabled).
 
 Note: other download-manager extensions (IDM, FDM…) also hook `onDeterminingFilename`; only one
-of them can win, so disable them while using Prism.
+of them can win, so disable them while using 12e Downloader.
 
 ## Features
 
-* **Download capture** — a browser download is handed to Prism when capture is on and not paused,
+* **Download capture** — a browser download is handed to 12e Downloader when capture is on and not paused,
   the bypass key was not held, the URL is http(s)/ftp (`blob:`/`data:` stay in the browser), the
   request was a GET (POST downloads stay), the page/URL isn't excluded, the extension *or* MIME type
   is in the lists and the size (when known) ≥ the minimum. The extension forwards URL, final URL,
@@ -66,12 +66,12 @@ of them can win, so disable them while using Prism.
   (`currentSrc`, `src`, `<source>` children, a `data-sources` quality list as on LinkedIn), best
   quality first — then the tab's other sniffed streams (other posts, autoplaying ads).
 * **Popup** — connection state (with a fix hint), pause-capture toggle, media on the page with
-  per-item Download, "All links / images / videos", Open Prism, Options. Follows the system theme.
-* **Context menus** — Download with Prism (link/image/video/audio; a video that plays a `blob:`
-  stream opens the Prism menu over it, or the app's video window without the in-page button), Download selection links,
+  per-item Download, "All links / images / videos", Open 12e Downloader, Options. Follows the system theme.
+* **Context menus** — Download with 12e Downloader (link/image/video/audio; a video that plays a `blob:`
+  stream opens the 12e Downloader menu over it, or the app's video window without the in-page button), Download selection links,
   all links, all images, all videos (collected in every frame with `scripting.executeScript`).
 * **Options** — capture on/off, video button, bypass key, extension list, MIME list, min size,
-  excluded sites, video sites, *Sync from Prism*.
+  excluded sites, video sites, *Sync from 12e Downloader*.
 * **Native port** — one lazy `connectNative('dev.prism.host')` port kept open (keeps the MV3
   worker alive), id-correlated requests with timeouts, reconnect on demand (5 s back-off when the
   host is missing), one-shot `sendNativeMessage` fallback if the port dies mid-request, 1-min
@@ -97,7 +97,7 @@ app is known to be up, 12 s otherwise (lets the host launch it), `probeVideo` 60
 
 ### `hello`
 Sent on worker start, browser start, install, every minute (all with `noLaunch: true`) and on
-*Sync from Prism* (without `noLaunch`).
+*Sync from 12e Downloader* (without `noLaunch`).
 ```json
 { "id": "…", "type": "hello", "noLaunch": true, "protocol": 1, "version": "1.0.0",
   "browser": "chrome|edge|brave|opera|vivaldi|chromium|firefox", "userAgent": "Mozilla/5.0 …",
@@ -107,7 +107,7 @@ Sent on worker start, browser start, install, every minute (all with `noLaunch: 
 extension only when the browser doesn't update it by itself (not for `normal` / `admin`).
 Reply:
 ```json
-{ "ok": true, "app": { "name": "Prism", "version": "1.0.0" }, "protocol": 1,
+{ "ok": true, "app": { "name": "12e Downloader", "version": "1.0.0" }, "protocol": 1,
   "settings": {
     "captureEnabled": true,
     "extensions": ["ZIP", "ISO", "R0*", "…"],
@@ -122,7 +122,7 @@ All `settings` fields are optional (missing → extension defaults, see `src/sha
 `extensions`: upper-case, no dot, `*`/`?` wildcards. `mimeTypes`: entries ending in `/`, `-` or
 `*` are prefixes, others exact. `minSize`: bytes, 0 = none. `excludedSites`: `host` (incl.
 subdomains), `*.host`, or a URL glob. `bypassKey`: `alt|shift|ctrl|meta|none`. The extension
-applies app settings unless the user saved local overrides in Options (*Sync from Prism* reverts
+applies app settings unless the user saved local overrides in Options (*Sync from 12e Downloader* reverts
 to the app's).
 
 ### `download`
@@ -141,7 +141,7 @@ to the app's).
   "finalUrlCookies": "cdn_token=…",         // only when finalUrl is on another origin
   "userAgent": "Mozilla/5.0 …",
   "incognito": false,
-  "source": "capture" }                     // "capture" (intercepted) | "contextMenu" (Download with Prism)
+  "source": "capture" }                     // "capture" (intercepted) | "contextMenu" (Download with 12e Downloader)
 ```
 Reply: `{ "ok": true, "accepted": true, "downloadId": "…" }`. `accepted: false` → for
 `capture` the browser keeps the download itself. Any error → also fail-open.
@@ -199,10 +199,10 @@ item. Two shapes:
 
 ### `status`
 Popup open / *Retry*: `{ "id": "…", "type": "status", "noLaunch": true }` →
-`{ "ok": true, "app": { "name": "Prism", "version": "1.0.0" }, "captureEnabled": true }`.
+`{ "ok": true, "app": { "name": "12e Downloader", "version": "1.0.0" }, "captureEnabled": true }`.
 
 ### `open`
-Popup *Open Prism* / *Start Prism* (the host launches the app if needed):
+Popup *Open 12e Downloader* / *Start 12e Downloader* (the host launches the app if needed):
 `{ "id": "…", "type": "open", "page": "main|browserIntegration|settings" }` → `{ "ok": true }`
 (bring the main window to front, optionally on that page).
 
@@ -210,7 +210,7 @@ Popup *Open Prism* / *Start Prism* (the host launches the app if needed):
 App/host codes are shown to the user; these drive the connection indicator:
 `host_missing`/`host_forbidden` (native host not registered → "Repair" hint),
 `app_not_running`, `app_unreachable`, `timeout`, `host_exited`, `disconnected`, `unauthorized`
-(→ "Prism isn't reachable"). Any other `ok:false` code means the app is up but refused the request.
+(→ "12e Downloader isn't reachable"). Any other `ok:false` code means the app is up but refused the request.
 
 ## Layout
 
@@ -221,7 +221,7 @@ src/background/           index (router), native (port + correlation), capture, 
 src/content/              index, bypass (modifier tracking), video-button (+ styles)
 src/popup/, src/options/  vanilla TS + CSS (shared tokens in src/shared/ui.css)
 src/shared/               protocol types, settings, rules, media, cookies, correlator, bypass, icons, api shim
-scripts/gen-icons.mjs     renders the Prism mark to static/icons/*.png (no deps)
+scripts/gen-icons.mjs     renders the 12e Downloader mark to static/icons/*.png (no deps)
 test/                     vitest unit tests
 e2e/                      Playwright end-to-end test, mock app, test site
 ```
