@@ -5,7 +5,7 @@ import { api } from "../lib/api";
 import { formatBytes, formatSpeed } from "../lib/format";
 import { t, tr } from "../lib/i18n";
 import { displayName } from "../lib/present";
-import { isActive, useApp } from "../lib/store";
+import { useApp } from "../lib/store";
 import { useUi } from "../lib/ui";
 
 /** Glass status bar overlaying the bottom of the list. */
