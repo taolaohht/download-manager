@@ -768,7 +768,6 @@
   "The update couldn't be installed": "Pembaruan tidak dapat dipasang",
   "Download address": "Alamat unduhan",
   "https://… , ftp://… or magnet:?…": "https://… , ftp://… atau magnet:?…",
-  "Torrent — you will choose the files next.": "Torrent — selanjutnya Anda memilih file.",
   "Use a user name and password": "Gunakan nama pengguna dan kata sandi",
   "No links match the filter.": "Tidak ada tautan yang cocok dengan filter.",
   "Category folders (default)": "Folder kategori (default)",
@@ -1129,11 +1128,12 @@
   "Resume All": "Resume All",
   "Pause All": "Pause All",
   "Remove Selected": "Remove Selected",
-  "12e downloader checks the address and shows the Download File dialog.": "12e downloader checks the address and shows the Download File dialog.",
   "Source": "Source",
   "Video (yt-dlp)": "Video (yt-dlp)",
   "Torrent (Magnet)": "Torrent (Magnet)",
   "Paste a video or playlist URL to choose quality and format.": "Paste a video or playlist URL to choose quality and format.",
   "Paste a magnet link or torrent URL. You can choose files next.": "Paste a magnet link or torrent URL. You can choose files next.",
-  "The download details and destination are confirmed in the next step.": "The download details and destination are confirmed in the next step."
+  "The download details and destination are confirmed in the next step.": "The download details and destination are confirmed in the next step.",
+  "URL": "URL",
+  "Hugging Face model or dataset.": "Hugging Face model or dataset."
 }
