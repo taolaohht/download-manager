@@ -46,7 +46,7 @@ export default function AddUrlWindow() {
   };
 
   return (
-    <WindowFrame kind="addurl" title={t("Add URL")} icon={<LogoMark size={18} glass="indigo" />} className="addurl">
+    <WindowFrame kind="addurl" title={t("Add Download")} icon={<LogoMark size={18} glass="indigo" />} className="addurl">
       <div className="wbody">
         <div className="field">
           <span className="field__label">{t("Address")}</span>
@@ -65,7 +65,7 @@ export default function AddUrlWindow() {
             onEnter={submit}
           />
           <span className={`field__hint${error ? " text-danger" : ""}`}>
-            {error || (torrent ? t("Torrent — you will choose the files next.") : t("12e Downloader checks the address and shows the Download File dialog."))}
+            {error || (torrent ? t("Torrent — you will choose the files next.") : t("12e downloader checks the address and shows the Download File dialog."))}
           </span>
         </div>
         <button type="button" className="disclose" aria-expanded={auth} onClick={() => setAuth(!auth)}>
