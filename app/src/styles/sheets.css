@@ -332,3 +332,23 @@
   .sheet--settings .srow > .textarea,
   .sheet--settings .srow .withbtn { width: 100%; }
 }
+
+
+/* Add Download source picker — dark navy and violet reference treatment. */
+.wframe.addurl { background:#0b1220; color:#edf2ff; border:1px solid #3d2b67; box-shadow:0 18px 54px #0009; }
+.addurl .wtitle { background:#0e1728; border-bottom:1px solid #1e2d46; color:#f4f6ff; }
+.addurl .wbody.add-download { display:flex; flex-direction:column; gap:18px; padding:18px 20px 16px; background:#0b1220; }
+.add-download .field { gap:8px; }
+.add-download .field__label { color:#dce5f7; font-weight:600; }
+.add-download__sources { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.add-download__sources button { min-width:0; min-height:38px; display:flex; align-items:center; justify-content:center; gap:7px; padding:0 8px; border:1px solid #202e46; border-radius:9px; background:#151f31; color:#d7e1f3; font-size:12px; font-weight:600; white-space:nowrap; }
+.add-download__sources button:hover { background:#202d45; }
+.add-download__sources button.is-active { color:#fff; border-color:#7c3aed; background:linear-gradient(110deg,#6422e8,#852ff0); box-shadow:0 4px 16px #6d28d933; }
+.addurl .input { background:#101a2b; border-color:#2b3b57; color:#edf2ff; }
+.addurl .input input,.addurl .input__value { color:#edf2ff; }
+.addurl .input input::placeholder { color:#8495b0; }
+.addurl .field__hint { color:#91a2bd; }
+.addurl .disclose { color:#c7d4e9; }
+.addurl .dialog__footer { background:#0e1728; border-top:1px solid #1e2d46; padding:12px 20px; }
+.addurl .btn--ghost { color:#d8e2f4; background:#172235; border:1px solid #273650; }
+@media (max-width:560px) { .add-download__sources { grid-template-columns:1fr; } }
