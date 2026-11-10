@@ -780,7 +780,6 @@
   "The update couldn't be installed": "Das Update konnte nicht installiert werden",
   "Download address": "Download-Adresse",
   "https://… , ftp://… or magnet:?…": "https://… , ftp://… oder magnet:?…",
-  "Torrent — you will choose the files next.": "Torrent — die Dateien wählen Sie im nächsten Schritt.",
   "Use a user name and password": "Benutzername und Passwort verwenden",
   "No links match the filter.": "Keine Links passen zum Filter.",
   "Category folders (default)": "Kategorieordner (Standard)",
@@ -1152,11 +1151,12 @@
   "Resume All": "Resume All",
   "Pause All": "Pause All",
   "Remove Selected": "Remove Selected",
-  "12e downloader checks the address and shows the Download File dialog.": "12e downloader checks the address and shows the Download File dialog.",
   "Source": "Source",
   "Video (yt-dlp)": "Video (yt-dlp)",
   "Torrent (Magnet)": "Torrent (Magnet)",
   "Paste a video or playlist URL to choose quality and format.": "Paste a video or playlist URL to choose quality and format.",
   "Paste a magnet link or torrent URL. You can choose files next.": "Paste a magnet link or torrent URL. You can choose files next.",
-  "The download details and destination are confirmed in the next step.": "The download details and destination are confirmed in the next step."
+  "The download details and destination are confirmed in the next step.": "The download details and destination are confirmed in the next step.",
+  "URL": "URL",
+  "Hugging Face model or dataset.": "Hugging Face model or dataset."
 }
