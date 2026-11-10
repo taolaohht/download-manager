@@ -89,6 +89,7 @@ export function TitleRow() {
         </button>
       )}
       <span className="spacer" />
+      <label className="input filter-search"><Icon name="search" size={17} /><input value={useApp.getState().search} placeholder={t("Search downloads…")} aria-label={t("Search downloads")} onChange={(e) => useApp.getState().setSearch(e.target.value)} /></label>
       <Segmented<StatusFilter>
         label={t("Filter by status")}
         value={filter}
