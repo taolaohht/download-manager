@@ -96,5 +96,7 @@
   "Torrent (Magnet)": "Torrent (Magnet)",
   "Paste a video or playlist URL to choose quality and format.": "Paste a video or playlist URL to choose quality and format.",
   "Paste a magnet link or torrent URL. You can choose files next.": "Paste a magnet link or torrent URL. You can choose files next.",
-  "The download details and destination are confirmed in the next step.": "The download details and destination are confirmed in the next step."
+  "The download details and destination are confirmed in the next step.": "The download details and destination are confirmed in the next step.",
+  "URL": "URL",
+  "Hugging Face model or dataset.": "Hugging Face model or dataset."
 }
