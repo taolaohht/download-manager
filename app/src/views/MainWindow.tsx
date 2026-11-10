@@ -93,7 +93,7 @@ export function MainWindow() {
     <div className={compact ? "win canvas win--compact" : "win canvas"} onDragOver={onDragOver} onDragLeave={onDragLeave} onDrop={onDrop}>
       <main className="sheet sheet--reference" style={{ ["--bottom-h" as string]: detailsOpen ? `${bottomHeight}px` : "0px" }}>
         <header className="app-header" data-tauri-drag-region>
-          <div className="app-header__brand"><BrandTile size={42} /><div><strong>12e Downloader</strong><span>by 12ecember</span></div></div>
+          <div className="app-header__brand"><BrandTile size={42} /><div><strong>12e downloader</strong></div></div>
           <div className="app-header__caption">
             <button type="button" aria-label={t("Minimize")} onClick={() => void win.minimize()}><Icon name="minimize" size={17} /></button>
             <button type="button" aria-label={t("Maximize")} onClick={() => void win.toggleMaximize()}><Icon name="maximize" size={16} /></button>
