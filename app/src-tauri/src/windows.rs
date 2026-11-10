@@ -58,7 +58,7 @@ fn spec(kind: &str) -> Spec {
             min_size: Some((560.0, 540.0)),
             ..s(640.0, 600.0, false, true, "Tools")
         },
-        "addurl" => s(600.0, 300.0, true, false, "Add URL"),
+        "addurl" => s(600.0, 420.0, true, false, "Add Download"),
         "mini" => s(360.0, 220.0, true, false, "Prism Mini"),
         "dropzone" => s(112.0, 112.0, true, false, "Prism Drop Zone"),
         _ => s(720.0, 560.0, false, true, "Prism"),
