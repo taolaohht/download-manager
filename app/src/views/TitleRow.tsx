@@ -89,8 +89,6 @@ export function TitleRow() {
           <Icon name="grabber" size={15} /> {t("Open project")}
         </button>
       )}
-      <span className="spacer" />
-      <label className="input filter-search"><Icon name="search" size={17} /><input value={search} placeholder={t("Search downloads…")} aria-label={t("Search downloads")} onChange={(e) => useApp.getState().setSearch(e.target.value)} /></label>
       <Segmented<StatusFilter>
         label={t("Filter by status")}
         value={filter}
@@ -111,6 +109,8 @@ export function TitleRow() {
         onClick={() => void patchSettings({ appearance: { density: density === "compact" ? "comfortable" : "compact" } })}
       />
       <IconButton variant="button" icon="columns" size={16} label={t("Columns")} onClick={(e) => openMenuAt(e.currentTarget, [{ heading: t("Visible columns") }, ...columns()])} />
+      <span className="spacer" />
+      <label className="input filter-search"><Icon name="search" size={17} /><input value={search} placeholder={t("Search downloads…")} aria-label={t("Search downloads")} onChange={(e) => useApp.getState().setSearch(e.target.value)} /></label>
     </div>
   );
 }
