@@ -15,16 +15,16 @@ const PUBLIC_KEY = readFileSync(join(root, 'keys', 'public-key.txt'), 'utf8').tr
 export const CHROME_EXTENSION_ID = 'mmcdeiglkbfbicdjboocmhehodogilfl';
 export const GECKO_ID = 'prism@prismdl.site';
 
-const description = 'Hand downloads, videos and links to 12e Downloader.';
+const description = 'Hand downloads, videos and links to 12e downloader.';
 const icons = { 16: 'icons/icon-16.png', 32: 'icons/icon-32.png', 48: 'icons/icon-48.png', 128: 'icons/icon-128.png' };
 const common = {
   manifest_version: 3,
-  name: '12e Downloader',
+  name: '12e downloader',
   short_name: '12e',
   version: pkg.version,
   description,
   icons,
-  action: { default_popup: 'popup.html', default_title: '12e Downloader', default_icon: { 16: icons[16], 32: icons[32] } },
+  action: { default_popup: 'popup.html', default_title: '12e downloader', default_icon: { 16: icons[16], 32: icons[32] } },
   options_ui: { page: 'options.html', open_in_tab: true },
   host_permissions: ['<all_urls>'],
   content_scripts: [{ matches: ['<all_urls>'], js: ['content.js'], run_at: 'document_start', all_frames: true }],
