@@ -34,7 +34,7 @@ export function TitleRow() {
       if (view.kind === "status") return view.id === "finished" ? i.status === "completed" : view.id === "unfinished" ? i.status !== "completed" : true;
       return true;
     });
-    const f = (k: StatusFilter) => scoped.filter((i) => matchesFilter(st.progress[i.id]?.status ?? i.status, k)).length;
+    const f = (k: StatusFilter) => scoped.filter((i) => matchesFilter(st.progress[i.id]?.status ?? i.status, k, i.queueId)).length;
     return {
       total: scoped.length,
       active: scoped.filter((i) => isActive(i.status)).length,
