@@ -17,7 +17,7 @@ import { EmptyState } from "./EmptyState";
 import { itemMenu } from "./itemMenu";
 import { useVisibleIds } from "./useListing";
 
-const ROW = { comfortable: 44, compact: 30 } as const;
+const ROW = { comfortable: 54, compact: 36 } as const;
 
 export function DownloadTable() {
   const ids = useVisibleIds();
