@@ -108,7 +108,7 @@ export function Sidebar() {
       <div className="brand" data-tauri-drag-region>
         <BrandTile size={28} />
         <span className="brand__name" data-tauri-drag-region>
-          Prism
+          12e Downloader
         </span>
       </div>
       <nav className="nav" ref={navRef} data-more-below={moreBelow || undefined} data-more-above={moreAbove || undefined}>
