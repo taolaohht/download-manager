@@ -14,12 +14,12 @@ const targetIdx = args.indexOf("--target");
 const hostTriple = execFileSync("rustc", ["-vV"], { encoding: "utf8" }).match(/host: (\S+)/)[1];
 const triple = targetIdx >= 0 ? args[targetIdx + 1] : process.env.TAURI_ENV_TARGET_TRIPLE || hostTriple;
 
-const cargoArgs = ["build", "-p", "12e-native-host", "--target", triple];
+const cargoArgs = ["build", "-p", "prism-native-host", "--target", triple];
 if (!debug) cargoArgs.push("--release");
 execFileSync("cargo", cargoArgs, { cwd: root, stdio: "inherit" });
 
 const ext = triple.includes("windows") ? ".exe" : "";
-const built = join(root, "target", triple, debug ? "debug" : "release", `12e-native-host${ext}`);
+const built = join(root, "target", triple, debug ? "debug" : "release", `prism-native-host${ext}`);
 const outDir = join(root, "app", "src-tauri", "binaries");
 mkdirSync(outDir, { recursive: true });
 const out = join(outDir, `12e-native-host-${triple}${ext}`);
