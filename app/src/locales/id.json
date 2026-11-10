@@ -757,7 +757,6 @@
   "Maximize": "Maksimalkan",
   "Close to tray": "Tutup ke baki sistem",
   "Download actions": "Tindakan unduhan",
-  "Could not remove completed downloads": "Tidak dapat menghapus unduhan yang selesai",
   "Search downloads": "Cari unduhan",
   "You have {version}.": "Versi Anda {version}.",
   "What’s new": "Yang baru",
@@ -1105,7 +1104,6 @@
   "Installing 12e Downloader {version}…": "Memasang 12e Downloader {version}…",
   "Downloading 12e Downloader {version}… {percent}%": "Mengunduh 12e Downloader {version}… {percent}%",
   "12e Downloader restarts by itself and your downloads continue.": "12e Downloader akan memulai ulang sendiri dan unduhan Anda tetap berlanjut.",
-  "12e Downloader checks the address and shows the Download File dialog.": "12e Downloader memeriksa alamat lalu menampilkan dialog Unduh file.",
   "Drop links here to download. Double-click to open 12e Downloader.": "Lepas tautan di sini untuk mengunduh. Klik dua kali untuk membuka 12e Downloader.",
   "Drop links here · double-click opens 12e Downloader": "Lepas tautan di sini · klik dua kali membuka 12e Downloader",
   "Nothing downloading — open 12e Downloader": "Tidak ada yang diunduh — buka 12e Downloader",
@@ -1126,5 +1124,10 @@
   "Selected: {selected}": "Selected: {selected}",
   "Total: {size}": "Total: {size}",
   "Search downloads…": "Search downloads…",
-  "Delete All": "Delete All"
+  "Add Download": "Add Download",
+  "Could not resume downloads": "Could not resume downloads",
+  "Resume All": "Resume All",
+  "Pause All": "Pause All",
+  "Remove Selected": "Remove Selected",
+  "12e downloader checks the address and shows the Download File dialog.": "12e downloader checks the address and shows the Download File dialog."
 }
