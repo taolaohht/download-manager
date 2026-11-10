@@ -1,8 +1,10 @@
 /** Inline SVG icons for 12e Downloader. */
+import { api } from './api';
 
 /** Compact 12e wordmark used by the browser extension. */
 export function brandMark(size = 18): string {
-  return '<img class="brand-mark" src="icons/icon-128.png" width="' + size + '" height="' + size + '" alt="">';
+  const src = api.runtime.getURL('icons/icon-128.png');
+  return '<img class="brand-mark" src="' + src + '" width="' + size + '" height="' + size + '" alt="">';
 }
 const s = (body: string, size = 16) =>
   `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
