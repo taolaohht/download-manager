@@ -817,7 +817,6 @@
   "Maximize": "Ekranı kapla",
   "Close to tray": "Sistem tepsisine gizle",
   "Download actions": "İndirme eylemleri",
-  "Could not remove completed downloads": "Tamamlanan indirmeler kaldırılamadı",
   "Search downloads": "İndirmelerde ara",
   "12e Downloader {version} is ready.": "12e Downloader {version} hazır.",
   "You have {version}.": "Sizdeki sürüm: {version}.",
@@ -835,7 +834,6 @@
   "Download address": "İndirme adresi",
   "https://… , ftp://… or magnet:?…": "https://… , ftp://… veya magnet:?…",
   "Torrent — you will choose the files next.": "Torrent — dosyaları bir sonraki adımda seçeceksiniz.",
-  "12e Downloader checks the address and shows the Download File dialog.": "12e Downloader adresi denetler ve “Dosya indir” penceresini gösterir.",
   "Use a user name and password": "Kullanıcı adı ve parola kullan",
   "No links match the filter.": "Filtreyle eşleşen bağlantı yok.",
   "Category folders (default)": "Kategori klasörleri (varsayılan)",
@@ -1149,5 +1147,10 @@
   "Selected: {selected}": "Selected: {selected}",
   "Total: {size}": "Total: {size}",
   "Search downloads…": "Search downloads…",
-  "Delete All": "Delete All"
+  "Add Download": "Add Download",
+  "Could not resume downloads": "Could not resume downloads",
+  "Resume All": "Resume All",
+  "Pause All": "Pause All",
+  "Remove Selected": "Remove Selected",
+  "12e downloader checks the address and shows the Download File dialog.": "12e downloader checks the address and shows the Download File dialog."
 }
