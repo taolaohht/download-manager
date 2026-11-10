@@ -865,7 +865,6 @@
   "All downloads": "كل التنزيلات",
   "Unfinished": "غير مكتملة",
   "Total download speed": "سرعة التنزيل الإجمالية",
-  "{active} active · {queued} queued": "نشطة: {active} · في الانتظار: {queued}",
   "{queues} running": "قيد التشغيل: {queues}",
   "{queue} at {time}": "{queue} الساعة {time}",
   "Limit {value}": "الحد: {value}",
@@ -901,13 +900,7 @@
   "Maximize": "تكبير",
   "Close to tray": "إغلاق إلى منطقة الإعلام",
   "Download actions": "إجراءات التنزيل",
-  "Add a download address": "إضافة عنوان تنزيل",
-  "Stop all": "إيقاف الكل",
-  "Remove completed from the list": "إزالة المكتملة من القائمة",
   "Could not remove completed downloads": "تعذّرت إزالة التنزيلات المكتملة",
-  "Start {name}": "بدء {name}",
-  "Stop {name}": "إيقاف {name}",
-  "Speed limiter on · {limit}": "محدد السرعة مُفعّل · {limit}",
   "Search downloads": "البحث في التنزيلات",
   "12e Downloader {version} is ready.": "أصبح 12e Downloader {version} جاهزًا.",
   "You have {version}.": "لديك الإصدار {version}.",
@@ -1244,5 +1237,9 @@
   "What's inside a ZIP": "ما بداخل ملف ZIP",
   "The “Download file” window shows the files in a ZIP before you download it, and can download just one of them.": "تعرض نافذة «تنزيل ملف» الملفات الموجودة في ZIP قبل تنزيله، ويمكنها تنزيل ملف واحد منها فقط.",
   "Finished means finished": "المكتمل مكتمل",
-  "A download that finished while the window was open sometimes still looked like it was downloading.": "التنزيل الذي اكتمل والنافذة مفتوحة كان يبدو أحياناً كأنه ما زال قيد التنزيل."
+  "A download that finished while the window was open sometimes still looked like it was downloading.": "التنزيل الذي اكتمل والنافذة مفتوحة كان يبدو أحياناً كأنه ما زال قيد التنزيل.",
+  "Selected: {selected}": "Selected: {selected}",
+  "Total: {size}": "Total: {size}",
+  "Search downloads…": "Search downloads…",
+  "Delete All": "Delete All"
 }
