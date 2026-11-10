@@ -43,12 +43,14 @@ export function statusView(item: DownloadItem, progress?: Progress | null): Stat
 }
 
 /** Title-row status filter, applied on top of the sidebar view. */
-export function matchesFilter(status: Status, filter: "all" | "active" | "queued" | "completed" | "failed"): boolean {
+export function matchesFilter(status: Status, filter: "all" | "active" | "queues" | "queued" | "completed" | "failed", queueId?: string | null): boolean {
   switch (filter) {
     case "all":
       return true;
     case "active":
       return ["connecting", "downloading", "retrying", "processing"].includes(status);
+    case "queues":
+      return !!queueId;
     case "queued":
       return status === "queued" || status === "idle" || status === "paused";
     case "completed":
