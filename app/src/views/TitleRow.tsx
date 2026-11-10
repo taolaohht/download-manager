@@ -17,6 +17,7 @@ export function TitleRow() {
   const title = useViewTitle();
   const view = useApp((s) => s.view);
   const items = useApp((s) => s.items);
+  const progress = useApp((s) => s.progress);
   const filter = useUi((s) => s.filter);
   const queues = useApp((s) => s.queues);
   const density = useApp((s) => s.settings?.appearance.density ?? "comfortable");
@@ -24,7 +25,6 @@ export function TitleRow() {
 
   // Counts for the segmented filter within the current view (search ignored on purpose).
   const stats = useMemo(() => {
-    const st = useApp.getState();
     const scoped = Object.values(items).filter((i) => {
       if (view.kind === "trash") return i.trashed;
       if (i.trashed) return false;
@@ -34,14 +34,14 @@ export function TitleRow() {
       if (view.kind === "status") return view.id === "finished" ? i.status === "completed" : view.id === "unfinished" ? i.status !== "completed" : true;
       return true;
     });
-    const f = (k: StatusFilter) => scoped.filter((i) => matchesFilter(st.progress[i.id]?.status ?? i.status, k, i.queueId)).length;
+    const f = (k: StatusFilter) => scoped.filter((i) => matchesFilter(progress[i.id]?.status ?? i.status, k, i.queueId)).length;
     return {
       total: scoped.length,
-      active: scoped.filter((i) => isActive(st.progress[i.id]?.status ?? i.status)).length,
+      active: scoped.filter((i) => isActive(progress[i.id]?.status ?? i.status)).length,
       bytes: scoped.reduce((sum, i) => sum + (i.size ?? 0), 0),
       byFilter: { all: scoped.length, active: f("active"), queues: scoped.filter((i) => !!i.queueId).length, queued: f("queued"), completed: f("completed"), failed: f("failed") },
     };
-  }, [items, view]);
+  }, [items, view, progress]);
 
   const queue = view.kind === "queue" ? queues.find((q) => q.id === view.id) : undefined;
   const columns = () => {
