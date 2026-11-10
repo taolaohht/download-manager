@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/brand/png/app-icon-256.png" width="120" alt="12e Downloader">
+  <img src="assets/brand/png/app-icon-256.png" width="120" alt="12e downloader">
 </p>
 
-<h1 align="center">12e Downloader</h1>
+<h1 align="center">12e downloader</h1>
 
 <p align="center">
   <b>One beam. Many rays.</b><br>
@@ -18,20 +18,20 @@
 
 ---
 
-12e Downloader splits every download into up to **32 parallel connections**, keeps them all busy until
+12e downloader splits every download into up to **32 parallel connections**, keeps them all busy until
 the last byte, and survives crashes, sleep and pulled cables. Click a link in your browser and
-12e Downloader takes over; hover a video and grab it as **MP4 in the quality you want — or just the MP3**.
+12e downloader takes over; hover a video and grab it as **MP4 in the quality you want — or just the MP3**.
 All of it in a calm, liquid-glass interface with dark and light themes.
 
 Free, open source, no ads, no accounts, no telemetry.
 
-## ✨ Why 12e Downloader
+## ✨ Why 12e downloader
 
 | | |
 |---|---|
-| ⚡ **Up to 15× faster** | On servers that throttle each connection, 12e Downloader's multi-connection engine is up to 15× faster than a normal browser download ([benchmarks](docs/benchmarks.md)). |
-| 🔁 **Never start over** | Pause, close the laptop, lose power — 12e Downloader resumes exactly where it stopped and checks that the file on the server hasn't changed. |
-| 🌐 **Lives in your browser** | Chrome, Edge, Brave, Opera, Vivaldi and Firefox. Downloads jump into 12e Downloader in about a quarter of a second. |
+| ⚡ **Up to 15× faster** | On servers that throttle each connection, 12e downloader's multi-connection engine is up to 15× faster than a normal browser download ([benchmarks](docs/benchmarks.md)). |
+| 🔁 **Never start over** | Pause, close the laptop, lose power — 12e downloader resumes exactly where it stopped and checks that the file on the server hasn't changed. |
+| 🌐 **Lives in your browser** | Chrome, Edge, Brave, Opera, Vivaldi and Firefox. Downloads jump into 12e downloader in about a quarter of a second. |
 | 🎬 **Video & music** | YouTube and [1,800+ sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md): MP4 up to 8K/HDR or MP3 only, with subtitles, chapters and SponsorBlock. |
 | 🧲 **Every protocol** | HTTP(S), FTP/FTPS, HLS and DASH streams, BitTorrent and magnet links. |
 | 🤖 **AI models** | Download models from [Hugging Face](https://huggingface.co) by name, link or search. |
@@ -46,18 +46,18 @@ Download the **Windows 10/11 x64 portable ZIP** from the
 
 1. Extract the ZIP anywhere — a normal folder or USB drive.
 2. Run `12e-downloader.exe`.
-3. 12e Downloader keeps settings, history, and its data in the `data` folder beside the executable.
+3. 12e downloader keeps settings, history, and its data in the `data` folder beside the executable.
 
 No installer or administrator permission is required. The portable build is the only supported
 desktop release.
 
 ## 🌐 Browser extension
 
-**[Add 12e Downloader from the Chrome Web Store](https://chromewebstore.google.com/detail/prism-download-manager/mmcdeiglkbfbicdjboocmhehodogilfl)**
+**[Add 12e downloader from the Chrome Web Store](https://chromewebstore.google.com/detail/prism-download-manager/mmcdeiglkbfbicdjboocmhehodogilfl)**
 — Chrome, Edge, Brave, Opera, Vivaldi and other Chromium browsers. The portable ZIP also
 contains the unpacked Chromium and Firefox extension builds for manual installation.
 
-12e Downloader walks you through browser integration on first start and from **Settings → Browser
+12e downloader walks you through browser integration on first start and from **Settings → Browser
 integration**. See the [browser extension guide](docs/guide/browser-extension.md).
 
 ## 📸 Screenshots
@@ -65,7 +65,7 @@ integration**. See the [browser extension guide](docs/guide/browser-extension.md
 | | |
 |---|---|
 | ![Download File dialog](docs/screenshots/download-file-dialog.png) | ![Video: MP4 or MP3](docs/screenshots/video-dialog.png) |
-| **Click a link** — 12e Downloader asks where to save it | **Grab a video** — MP4 + quality, or MP3 only |
+| **Click a link** — 12e downloader asks where to save it | **Grab a video** — MP4 + quality, or MP3 only |
 | ![Scheduler](docs/screenshots/scheduler.png) | ![Browser integration](docs/screenshots/settings-browser-integration.png) |
 | **Queues & scheduler** — download at night, then sleep | **Browser integration** — status and one-click repair |
 | ![Download complete](docs/screenshots/complete-dialog.png) | ![Mini window](docs/screenshots/mini-window.png) |
@@ -76,7 +76,7 @@ integration**. See the [browser extension guide](docs/guide/browser-extension.md
 Same files, same machine, every result verified by SHA-256
 ([method & full results](docs/benchmarks.md)):
 
-| Scenario | curl (1 connection) | aria2c | **12e Downloader** |
+| Scenario | curl (1 connection) | aria2c | **12e downloader** |
 |---|---|---|---|
 | 1 GiB from a server that throttles each connection | 4.0 MiB/s | 61.0 MiB/s | **60.9 MiB/s** |
 | 2 GiB, no network limit | 672 MiB/s | 324 MiB/s | **1029 MiB/s** |
@@ -88,9 +88,9 @@ Same files, same machine, every result verified by SHA-256
 
 * **Dynamic segmentation.** When a connection finishes its part, it takes over half of the
   largest part still remaining — so every connection stays busy until the very end.
-* **Server-aware.** 12e Downloader notices when a server refuses extra connections, settles on what it
+* **Server-aware.** 12e downloader notices when a server refuses extra connections, settles on what it
   allows and remembers it per host.
-* **Crash-safe.** Progress is checkpointed only after data is flushed to disk; on resume 12e Downloader
+* **Crash-safe.** Progress is checkpointed only after data is flushed to disk; on resume 12e downloader
   validates size, ETag and Last-Modified with `If-Range`.
 * **Rust + Tauri.** A Rust engine and React UI in a native Windows Tauri 2 shell.
 
@@ -127,7 +127,7 @@ means neither works reliably.
 
 <details><summary><b>Which sites can it download video from?</b></summary>
 
-Every site supported by [yt-dlp](https://github.com/yt-dlp/yt-dlp), which 12e Downloader installs and
+Every site supported by [yt-dlp](https://github.com/yt-dlp/yt-dlp), which 12e downloader installs and
 keeps up to date for you (together with ffmpeg). Please download only content you have the
 right to download.
 </details>
@@ -145,5 +145,5 @@ Bug reports, ideas and pull requests are welcome — see [CONTRIBUTING.md](CONTR
 
 ## 📄 License
 
-[MIT](LICENSE) for 12e Downloader's own code. Bundled and downloaded components keep their own licenses —
+[MIT](LICENSE) for 12e downloader's own code. Bundled and downloaded components keep their own licenses —
 see [THIRD_PARTY.md](THIRD_PARTY.md).
