@@ -1,9 +1,9 @@
-Prism — portable edition
+12e Downloader — portable edition
 ========================
 
 1. Run prism.exe. All settings, history and tools are kept in the "data" folder
    next to it (because portable.txt exists), so the folder can live on a USB drive.
-2. Browser integration: Prism registers its native messaging host for the current
+2. Browser integration: 12e Downloader registers its native messaging host for the current
    Windows user on start. Then add the extension:
      Chrome / Edge / Brave / Opera / Vivaldi: from the Chrome Web Store (it updates
      by itself) - https://chromewebstore.google.com/detail/prism-download-manager/mmcdeiglkbfbicdjboocmhehodogilfl
