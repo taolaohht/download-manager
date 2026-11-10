@@ -100,14 +100,14 @@ export function MainWindow() {
             <button type="button" aria-label={t("Close to tray")} onClick={() => void win.close()}><Icon name="close" size={18} /></button>
           </div>
         </header>
+        <Toolbar />
         <TitleRow />
         <div className="banner-stack">
           <UpdateBanner />
           {!compact && <ConnectBanner onOpen={() => useUi.getState().openSheet({ kind: "settings", section: "browser" })} />}
         </div>
         <DownloadTable />
-        {!compact && <BottomPane />}
-        <Toolbar />
+        {!compact && <BottomPane />
         <StatusBar />
       </main>
       <PostActionBanner />
