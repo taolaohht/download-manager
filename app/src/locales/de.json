@@ -769,7 +769,6 @@
   "Maximize": "Maximieren",
   "Close to tray": "In den Infobereich schließen",
   "Download actions": "Download-Aktionen",
-  "Could not remove completed downloads": "Abgeschlossene Downloads konnten nicht entfernt werden",
   "Search downloads": "Downloads durchsuchen",
   "You have {version}.": "Sie haben {version}.",
   "What’s new": "Neuigkeiten",
@@ -1128,7 +1127,6 @@
   "Installing 12e Downloader {version}…": "12e Downloader {version} wird installiert…",
   "Downloading 12e Downloader {version}… {percent}%": "12e Downloader {version} wird heruntergeladen… {percent} %",
   "12e Downloader restarts by itself and your downloads continue.": "12e Downloader startet selbst neu und Ihre Downloads laufen weiter.",
-  "12e Downloader checks the address and shows the Download File dialog.": "12e Downloader prüft die Adresse und zeigt den Dialog „Datei herunterladen“.",
   "Drop links here to download. Double-click to open 12e Downloader.": "Links hier ablegen, um sie herunterzuladen. Doppelklick öffnet 12e Downloader.",
   "Drop links here · double-click opens 12e Downloader": "Links hier ablegen · Doppelklick öffnet 12e Downloader",
   "Nothing downloading — open 12e Downloader": "Keine aktiven Downloads — 12e Downloader öffnen",
@@ -1149,5 +1147,10 @@
   "Selected: {selected}": "Selected: {selected}",
   "Total: {size}": "Total: {size}",
   "Search downloads…": "Search downloads…",
-  "Delete All": "Delete All"
+  "Add Download": "Add Download",
+  "Could not resume downloads": "Could not resume downloads",
+  "Resume All": "Resume All",
+  "Pause All": "Pause All",
+  "Remove Selected": "Remove Selected",
+  "12e downloader checks the address and shows the Download File dialog.": "12e downloader checks the address and shows the Download File dialog."
 }
