@@ -52,7 +52,7 @@ export function resolveLanguage(setting: string | undefined, preferred: readonly
   const known = (code: string) => LANGUAGES.find((l) => l.code === code.toLowerCase().split(/[-_]/)[0])?.code;
   if (setting) return known(setting) ?? "en";
   for (const p of preferred) {
-    // Prism has Simplified Chinese only: a system in Traditional Chinese (Taiwan, Hong Kong,
+    // 12e Downloader has Simplified Chinese only: a system in Traditional Chinese (Taiwan, Hong Kong,
     // Macau) goes on to its next language rather than switch script; Chinese can be picked in
     // Settings.
     if (/^zh[-_](hant|tw|hk|mo)\b/i.test(p)) continue;
