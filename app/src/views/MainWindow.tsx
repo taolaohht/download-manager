@@ -10,7 +10,6 @@ import { useApp } from "../lib/store";
 import { attempt, toast, useUi } from "../lib/ui";
 import { BottomPane } from "./BottomPane";
 import { BrandTile } from "../components/LogoMark";
-import { Icon } from "../design/icons";
 import { useWhatsNew } from "./sheets/WhatsNewSheet";
 import { ConnectBanner } from "./BrowserConnect";
 import { Dialogs } from "./dialogs/Dialogs";
