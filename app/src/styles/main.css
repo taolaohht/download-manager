@@ -305,3 +305,73 @@
 }
 .post-banner__icon { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: rgb(var(--warning-rgb) / 0.15); color: var(--warning); }
 .post-banner > div { flex: 1; }
+
+
+/* 12e Downloader reference layout — bright, compact, full-width download desk. */
+.sheet--reference {
+  inset: 0 !important;
+  border-radius: 0;
+  box-shadow: none;
+  display: grid;
+  grid-template-rows: 86px 76px minmax(0,1fr) auto 62px;
+  background: #f8faff;
+  color: #10182f;
+}
+.sheet--reference .app-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 0 16px 0 30px; border-bottom:1px solid #dce3f1;
+  background:linear-gradient(180deg,#fbfcff,#f2f5fc);
+  min-width:0;
+}
+.app-header__brand { display:flex; align-items:center; gap:14px; }
+.app-header__brand > div { display:grid; gap:3px; }
+.app-header__brand strong { font-size:20px; font-weight:700; letter-spacing:-.03em; color:#10182b; }
+.app-header__brand span { font-size:14px; color:#52617e; }
+.app-header__caption { display:flex; align-self:stretch; align-items:stretch; gap:4px; }
+.app-header__caption button { width:52px; display:grid; place-items:center; color:#101828; border-radius:7px; }
+.app-header__caption button:hover { background:#e5eaf4; }
+.sheet--reference .titlerow { min-height:76px; padding:0 30px; gap:18px; border-bottom:1px solid #dce3f1; }
+.sheet--reference .titlerow__text { display:none; }
+.sheet--reference .titlerow .segmented { flex:none; }
+.sheet--reference .filter-search { width: min(340px, 25vw); margin-left:auto; height:44px; border-radius:10px; background:#fff; border:1px solid #d6deed; }
+.sheet--reference .filter-search input { min-width:0; width:100%; }
+.sheet--reference .table { min-height:0; margin:10px 16px 8px; border:1px solid #dce3f1; border-radius:15px; overflow:hidden; background:#fff; }
+.sheet--reference .table__body { padding-bottom:0; }
+.sheet--reference .thead { height:54px; padding:0 16px; background:#f8faff; color:#1b2742; font-size:14px; border-bottom:1px solid #dce3f1; }
+.sheet--reference .table__inner { margin-top:0; }
+.sheet--reference .row { height:54px; inset-inline:0; border-radius:0; padding:0 12px; }
+.sheet--reference .row::before { inset-inline:0; background:#e9edf5; }
+.sheet--reference .row > div { padding:0 12px; }
+.sheet--reference .name__t { font-size:15px; font-weight:600; color:#10182b; }
+.sheet--reference .num,.sheet--reference .st { font-size:14px; color:#1b2742; }
+.sheet--reference .st--accent,.sheet--reference .st--info { color:#0865d9; }
+.sheet--reference .st--success,.sheet--reference .st--success .icon { color:#0b9b48; }
+.sheet--reference .st--warning { color:#e87912; }
+.sheet--reference .st--danger { color:#d91e2b; }
+.sheet--reference .prog { grid-template-columns:minmax(0,1fr) 42px; align-items:center; gap:10px; }
+.sheet--reference .prog__top { display:contents; }
+.sheet--reference .prog__top > span:first-child { display:none; }
+.sheet--reference .prog__top > span:last-child { display:none; }
+.sheet--reference .prog__top b { grid-column:2; grid-row:1; font-size:14px; }
+.sheet--reference .progress { height:15px; border-radius:99px; background:#e0e5ef; }
+.sheet--reference .progress__fill { border-radius:99px; background:linear-gradient(90deg,#00a94f,#11bd67); }
+.sheet--reference .actionbar { display:flex; align-items:center; gap:12px; padding:10px 32px; margin:0 16px 8px; border:1px solid #dce3f1; border-radius:14px; background:#f9fbff; min-width:0; }
+.sheet--reference .action-btn { height:48px; min-width:118px; padding:0 18px; gap:10px; border-radius:11px; display:inline-flex; align-items:center; justify-content:center; font-size:15px; font-weight:600; background:#edf1f8; color:#111a2d; box-shadow:0 2px 3px #18284a14,inset 0 0 0 1px #dfe5f0; }
+.sheet--reference .action-btn:disabled { opacity:.45; }
+.sheet--reference .action-btn--add { background:#0868e9; color:white; }
+.sheet--reference .action-btn--start { background:#10a95a; color:white; }
+.sheet--reference .action-btn--pause { background:#8847e8; color:white; }
+.sheet--reference .action-btn--delete { background:#df2636; color:white; }
+.sheet--reference .actionbar__sep { height:34px; width:1px; background:#c7d0e1; margin:0 8px; }
+.sheet--reference .statusbar--reference { position:relative; height:62px; margin:0 16px 8px; padding:0 20px; border:1px solid #dce3f1; border-radius:13px; background:#f8faff; color:#233252; box-shadow:none; display:flex; align-items:center; gap:16px; }
+.sheet--reference .statusbar--reference .sb { color:#243454; font-size:14px; }
+.sheet--reference .statusbar--reference .sb.down { color:#111827; font-size:15px; }
+.sheet--reference .statusbar--reference .sb.down .icon { color:#10a95a; }
+.sheet--reference .statusbar--reference .statusbar__limit,.sheet--reference .statusbar--reference .statusbar__integration { display:none; }
+.sheet--reference .pane { background:#f7f9fd; }
+@media (max-width: 1050px) {
+ .sheet--reference .titlerow { gap:8px; padding:0 14px; }
+ .sheet--reference .actionbar { gap:6px; padding:8px 12px; }
+ .sheet--reference .action-btn { min-width:0; padding:0 10px; }
+ .sheet--reference .filter-search { width:180px; }
+}
