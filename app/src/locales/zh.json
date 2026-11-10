@@ -799,7 +799,6 @@
   "Maximize": "最大化",
   "Close to tray": "关闭到托盘",
   "Download actions": "下载操作",
-  "Could not remove completed downloads": "无法移除已完成的下载",
   "Search downloads": "搜索下载",
   "12e Downloader {version} is ready.": "12e Downloader {version} 已准备就绪。",
   "You have {version}.": "当前版本为 {version}。",
@@ -817,7 +816,6 @@
   "Download address": "下载地址",
   "https://… , ftp://… or magnet:?…": "https://…、ftp://… 或 magnet:?…",
   "Torrent — you will choose the files next.": "种子——下一步选择文件。",
-  "12e Downloader checks the address and shows the Download File dialog.": "12e Downloader 会检查该地址并显示“下载文件”对话框。",
   "Use a user name and password": "使用用户名和密码",
   "No links match the filter.": "没有与筛选条件匹配的链接。",
   "Category folders (default)": "分类文件夹（默认）",
@@ -1126,5 +1124,10 @@
   "Selected: {selected}": "Selected: {selected}",
   "Total: {size}": "Total: {size}",
   "Search downloads…": "Search downloads…",
-  "Delete All": "Delete All"
+  "Add Download": "Add Download",
+  "Could not resume downloads": "Could not resume downloads",
+  "Resume All": "Resume All",
+  "Pause All": "Pause All",
+  "Remove Selected": "Remove Selected",
+  "12e downloader checks the address and shows the Download File dialog.": "12e downloader checks the address and shows the Download File dialog."
 }
