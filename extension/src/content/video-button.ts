@@ -536,7 +536,7 @@ export class VideoButton {
   }
 
   private renderMenu(title: string, res: VideoOptionsResult | undefined): void {
-    const head = `<div class="head">${brandMark(16)}<span class="t">${esc(res?.title || title)}</span><span class="src">${res?.source === 'probe' ? 'Prism' : 'Detected'}</span></div>`;
+    const head = `<div class="head">${brandMark(16)}<span class="t">${esc(res?.title || title)}</span><span class="src">${res?.source === 'probe' ? '12e' : 'Detected'}</span></div>`;
     if (!res) {
       this.menu.innerHTML = `${head}<div class="note">Prism extension is restarting — try again in a moment.</div>`;
       return;
