@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "12e Downloader",
+  "productName": "12e downloader",
   "mainBinaryName": "12e-downloader",
   "version": "1.2.4",
   "identifier": "dev.prism.manager",
@@ -15,7 +15,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "12e Downloader",
+        "title": "12e downloader",
         "url": "index.html",
         "width": 1320,
         "height": 820,
@@ -35,7 +35,7 @@
   },
   "bundle": {
     "active": false,
-    "publisher": "12e Downloader",
+    "publisher": "12e downloader",
     "copyright": "Personal use",
     "category": "Utility",
     "shortDescription": "Fast multi-connection download manager",
