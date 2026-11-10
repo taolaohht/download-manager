@@ -774,7 +774,6 @@
   "All downloads": "Všechna stahování",
   "Unfinished": "Nedokončeno",
   "Total download speed": "Celková rychlost stahování",
-  "{active} active · {queued} queued": "Aktivní: {active} · Ve frontě: {queued}",
   "{queues} running": "Běží: {queues}",
   "{queue} at {time}": "{queue} v {time}",
   "Limit {value}": "Limit {value}",
@@ -806,13 +805,7 @@
   "Maximize": "Maximalizovat",
   "Close to tray": "Zavřít do oznamovací oblasti",
   "Download actions": "Akce stahování",
-  "Add a download address": "Přidat adresu ke stažení",
-  "Stop all": "Zastavit vše",
-  "Remove completed from the list": "Odebrat dokončená ze seznamu",
   "Could not remove completed downloads": "Dokončená stahování se nepodařilo odebrat",
-  "Start {name}": "Spustit {name}",
-  "Stop {name}": "Zastavit {name}",
-  "Speed limiter on · {limit}": "Omezení rychlosti zapnuto · {limit}",
   "Search downloads": "Hledat stahování",
   "You have {version}.": "Máte verzi {version}.",
   "What’s new": "Co je nového",
@@ -1198,5 +1191,9 @@
   "12e Downloader can’t save next to the original (no permission).": "12e Downloader nemůže ukládat vedle originálu (chybí oprávnění).",
   "Or choose files. 12e Downloader fits each one under the size you pick.": "Nebo vyberte soubory. 12e Downloader každý vtěsná pod velikost, kterou zvolíte.",
   "The first time, 12e Downloader downloads the converter (FFmpeg).": "Poprvé si 12e Downloader stáhne převaděč (FFmpeg).",
-  "Pick a quality with the Download button next to a video, or open the “Download video” window in 12e Downloader, and choose “Only a part”: where it starts and ends, or a chapter. 12e Downloader downloads only that part.": "Vyberte kvalitu tlačítkem Download u videa, nebo v 12e Downloaderu otevřete okno „Stáhnout video“, a zvolte „Jen část“: kde začíná a končí, nebo kapitolu. 12e Downloader stáhne jen tu část."
+  "Pick a quality with the Download button next to a video, or open the “Download video” window in 12e Downloader, and choose “Only a part”: where it starts and ends, or a chapter. 12e Downloader downloads only that part.": "Vyberte kvalitu tlačítkem Download u videa, nebo v 12e Downloaderu otevřete okno „Stáhnout video“, a zvolte „Jen část“: kde začíná a končí, nebo kapitolu. 12e Downloader stáhne jen tu část.",
+  "Selected: {selected}": "Selected: {selected}",
+  "Total: {size}": "Total: {size}",
+  "Search downloads…": "Search downloads…",
+  "Delete All": "Delete All"
 }
