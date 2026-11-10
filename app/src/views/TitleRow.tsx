@@ -39,7 +39,7 @@ export function TitleRow() {
       total: scoped.length,
       active: scoped.filter((i) => isActive(i.status)).length,
       bytes: scoped.reduce((sum, i) => sum + (i.size ?? 0), 0),
-      byFilter: { all: scoped.length, active: f("active"), queued: f("queued"), completed: f("completed"), failed: f("failed") },
+      byFilter: { all: scoped.length, active: f("active"), queues: scoped.filter((i) => !!i.queueId).length, queued: f("queued"), completed: f("completed"), failed: f("failed") },
     };
   }, [items, view]);
 
@@ -96,6 +96,7 @@ export function TitleRow() {
         options={[
           { value: "all", label: t("All"), count: stats.byFilter.all },
           { value: "active", label: t("Active"), count: stats.byFilter.active },
+          { value: "queues", label: t("Queues"), count: stats.byFilter.queues },
           { value: "queued", label: t("Waiting"), count: stats.byFilter.queued },
           { value: "completed", label: t("Completed"), count: stats.byFilter.completed },
           { value: "failed", label: t("Failed"), count: stats.byFilter.failed },
