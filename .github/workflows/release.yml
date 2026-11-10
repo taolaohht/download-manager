@@ -13,6 +13,9 @@ jobs:
   build:
     name: Build Windows x64 portable
     runs-on: windows-latest
+    env:
+      TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+      TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -39,7 +42,7 @@ jobs:
         shell: pwsh
         run: ./scripts/make-portable.ps1 -Target x86_64-pc-windows-msvc
       - name: Sign portable ZIP for update checks
-        if: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY != '' }}
+        if: ${{ env.TAURI_SIGNING_PRIVATE_KEY != '' }}
         shell: pwsh
         env:
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
