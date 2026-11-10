@@ -4,7 +4,7 @@
  * video sites, sniffed streams elsewhere.
  */
 import { sendInternal } from '../shared/api';
-import { icons, prismMark } from '../shared/icons';
+import { icons, brandMark } from '../shared/icons';
 import { type ElementSource, elementSources, linkedinCommentaryPath, linkedinPostPath, postUrl } from '../shared/media';
 import { siteMatches } from '../shared/rules';
 import type { ActionResult, VideoOption, VideoOptionsResult } from '../shared/messages';
@@ -263,7 +263,7 @@ export class VideoButton {
     this.wrap.className = 'wrap';
     this.wrap.innerHTML = `
       <button class="pill glass" type="button" aria-haspopup="menu" aria-expanded="false" title="Download this video with Prism">
-        ${prismMark(18)}<span class="label">Download</span><span class="chev">${icons.chevronDown(14)}</span>
+        ${brandMark(18)}<span class="label">Download</span><span class="chev">${icons.chevronDown(14)}</span>
       </button>
       <div class="menu glass" role="menu"></div>`;
     root.append(this.wrap);
@@ -536,7 +536,7 @@ export class VideoButton {
   }
 
   private renderMenu(title: string, res: VideoOptionsResult | undefined): void {
-    const head = `<div class="head">${prismMark(16)}<span class="t">${esc(res?.title || title)}</span><span class="src">${res?.source === 'probe' ? 'Prism' : 'Detected'}</span></div>`;
+    const head = `<div class="head">${brandMark(16)}<span class="t">${esc(res?.title || title)}</span><span class="src">${res?.source === 'probe' ? 'Prism' : 'Detected'}</span></div>`;
     if (!res) {
       this.menu.innerHTML = `${head}<div class="note">Prism extension is restarting — try again in a moment.</div>`;
       return;
