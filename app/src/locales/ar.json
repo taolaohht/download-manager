@@ -900,7 +900,6 @@
   "Maximize": "تكبير",
   "Close to tray": "إغلاق إلى منطقة الإعلام",
   "Download actions": "إجراءات التنزيل",
-  "Could not remove completed downloads": "تعذّرت إزالة التنزيلات المكتملة",
   "Search downloads": "البحث في التنزيلات",
   "12e Downloader {version} is ready.": "أصبح 12e Downloader {version} جاهزًا.",
   "You have {version}.": "لديك الإصدار {version}.",
@@ -918,7 +917,6 @@
   "Download address": "عنوان التنزيل",
   "https://… , ftp://… or magnet:?…": "https://… أو ftp://… أو magnet:?…",
   "Torrent — you will choose the files next.": "تورنت — ستختار الملفات في الخطوة التالية.",
-  "12e Downloader checks the address and shows the Download File dialog.": "يتحقق 12e Downloader من العنوان ويعرض نافذة «تنزيل ملف».",
   "Use a user name and password": "استخدام اسم مستخدم وكلمة مرور",
   "No links match the filter.": "لا توجد روابط مطابقة لعامل التصفية.",
   "Category folders (default)": "مجلدات الفئات (افتراضي)",
@@ -1241,5 +1239,10 @@
   "Selected: {selected}": "Selected: {selected}",
   "Total: {size}": "Total: {size}",
   "Search downloads…": "Search downloads…",
-  "Delete All": "Delete All"
+  "Add Download": "Add Download",
+  "Could not resume downloads": "Could not resume downloads",
+  "Resume All": "Resume All",
+  "Pause All": "Pause All",
+  "Remove Selected": "Remove Selected",
+  "12e downloader checks the address and shows the Download File dialog.": "12e downloader checks the address and shows the Download File dialog."
 }
