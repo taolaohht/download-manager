@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Icon } from "../design/icons";
 import { actions } from "../lib/actions";
 import { api } from "../lib/api";
@@ -22,17 +22,6 @@ export function StatusBar() {
   const [free, setFree] = useState<number | null>(null);
   const [next, setNext] = useState<[string, string | null][]>([]);
   const [integrationOk, setIntegrationOk] = useState<boolean | null>(null);
-
-  const c = useMemo(() => {
-    let active = 0;
-    let queued = 0;
-    for (const i of Object.values(items)) {
-      if (i.trashed) continue;
-      if (isActive(i.status)) active++;
-      else if (i.status === "queued") queued++;
-    }
-    return { active, queued };
-  }, [items]);
 
   useEffect(() => {
     if (!dir) return;
