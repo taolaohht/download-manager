@@ -72,7 +72,7 @@ jobs:
           persist-credentials: false
       - uses: actions/download-artifact@v5
         with:
-          name: prism-windows-x64-portable
+          name: 12e-downloader-windows-x64-portable
           path: artifacts
       - name: Prepare portable release and update manifest
         shell: pwsh
