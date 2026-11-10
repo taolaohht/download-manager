@@ -1152,5 +1152,11 @@
   "Resume All": "Resume All",
   "Pause All": "Pause All",
   "Remove Selected": "Remove Selected",
-  "12e downloader checks the address and shows the Download File dialog.": "12e downloader checks the address and shows the Download File dialog."
+  "12e downloader checks the address and shows the Download File dialog.": "12e downloader checks the address and shows the Download File dialog.",
+  "Source": "Source",
+  "Video (yt-dlp)": "Video (yt-dlp)",
+  "Torrent (Magnet)": "Torrent (Magnet)",
+  "Paste a video or playlist URL to choose quality and format.": "Paste a video or playlist URL to choose quality and format.",
+  "Paste a magnet link or torrent URL. You can choose files next.": "Paste a magnet link or torrent URL. You can choose files next.",
+  "The download details and destination are confirmed in the next step.": "The download details and destination are confirmed in the next step."
 }
