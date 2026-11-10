@@ -11,6 +11,8 @@ import { useUi } from "../lib/ui";
 /** Glass status bar overlaying the bottom of the list. */
 export function StatusBar() {
   const speed = useApp((s) => Object.values(s.progress).reduce((sum, p) => sum + (p.speed || 0), 0));
+  const selection = useApp((s) => s.selection);
+  const selectedBytes = useApp((s) => selection.reduce((sum, id) => sum + (s.items[id]?.size ?? 0), 0));
   const items = useApp((s) => s.items);
   const queues = useApp((s) => s.queues);
   const limiter = useApp((s) => s.settings?.downloads.speedLimiterEnabled ?? false);
@@ -49,12 +51,15 @@ export function StatusBar() {
   const upcomingQueue = upcoming && queues.find((q) => q.id === upcoming[0]);
 
   return (
-    <footer className="statusbar glass blur-md edge-top">
+    <footer className="statusbar statusbar--reference glass blur-md edge-top">
+      <span className="sb statusbar__selection">{t("Selected: {selected}", { selected: selection.length })} / {Object.values(items).filter((i) => !i.trashed).length}</span>
+      <span className="sb">{tr("Total: {size}", { size: <b>{formatBytes(selectedBytes)}</b> })}</span>
+      <span className="spacer" />
       <span className="sb down" data-tip={t("Total download speed")}>
         <Icon name="arrow-down" size={12} strokeWidth={2.2} />
         <b>{speed ? formatSpeed(speed) : "0 B/s"}</b>
       </span>
-      <span className="sb">{tr("{active} active · {queued} queued", { active: <b>{c.active}</b>, queued: <b>{c.queued}</b> })}</span>
+
       {running.length > 0 && (
         <span className="sb">
           <Icon name="queue" size={12} strokeWidth={2} />
@@ -68,7 +73,7 @@ export function StatusBar() {
         </span>
       )}
       <span className="spacer" />
-      <button type="button" className="sb sb--btn" onClick={() => void actions.toggleLimiter()} data-tip={t("Toggle speed limiter")} data-kbd="Ctrl L">
+      <button type="button" className="sb sb--btn statusbar__limit" onClick={() => void actions.toggleLimiter()} data-tip={t("Toggle speed limiter")} data-kbd="Ctrl L">
         <Icon name="speed-limiter" size={12} strokeWidth={2} />
         {tr("Limit {value}", { value: <b>{limiter ? `${formatBytes(limit)}/s` : t("Off")}</b> })}
       </button>
@@ -78,7 +83,7 @@ export function StatusBar() {
           {tr("{size} free", { size: <b>{formatBytes(free)}</b> })}
         </span>
       )}
-      <button type="button" className={`sb sb--btn ${integrationOk ? "ok" : "warn"}`} onClick={() => useUi.getState().openSheet({ kind: "settings", section: "browser" })}>
+      <button type="button" className={`sb sb--btn statusbar__integration ${integrationOk ? "ok" : "warn"}`} onClick={() => useUi.getState().openSheet({ kind: "settings", section: "browser" })}>
         <Icon name={integrationOk ? "shield" : "warning"} size={12} strokeWidth={2} />
         {integrationOk ? t("Integration OK") : t("Integration !")}
       </button>
