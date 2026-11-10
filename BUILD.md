@@ -16,8 +16,8 @@ first launch. No installer is generated.
 ## Setup
 
 ```powershell
-git clone <repo> prism
-cd prism
+git clone <repo> 12e-downloader
+cd 12e-downloader
 npm ci --prefix app
 npm ci --prefix extension
 ```
@@ -48,7 +48,7 @@ cd ..
 ./scripts/make-portable.ps1 -Target x86_64-pc-windows-msvc
 ```
 
-The ZIP is written to `packaging/out/12e Downloader-<version>-windows-x64-portable.zip`. It runs without
+The ZIP is written to `packaging/out/12e-Downloader-<version>-windows-x64-portable.zip`. It runs without
 an installer and stores settings, history, and download state in its own `data` folder.
 
 ## Continuous integration
