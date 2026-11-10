@@ -758,7 +758,6 @@
   "All downloads": "Tutti i download",
   "Unfinished": "Incompleto",
   "Total download speed": "Velocità totale di download",
-  "{active} active · {queued} queued": "Attivi: {active} · In coda: {queued}",
   "{queues} running": "In esecuzione: {queues}",
   "{queue} at {time}": "{queue} alle {time}",
   "Limit {value}": "Limite: {value}",
@@ -788,13 +787,7 @@
   "Maximize": "Ingrandisci",
   "Close to tray": "Chiudi nell’area di notifica",
   "Download actions": "Azioni sui download",
-  "Add a download address": "Aggiungi un indirizzo di download",
-  "Stop all": "Ferma tutto",
-  "Remove completed from the list": "Rimuovi i completati dall’elenco",
   "Could not remove completed downloads": "Impossibile rimuovere i download completati",
-  "Start {name}": "Avvia {name}",
-  "Stop {name}": "Ferma {name}",
-  "Speed limiter on · {limit}": "Limitatore di velocità attivo · {limit}",
   "Search downloads": "Cerca nei download",
   "You have {version}.": "Hai la versione {version}.",
   "What’s new": "Novità",
@@ -1175,5 +1168,9 @@
   "12e Downloader can’t save next to the original (no permission).": "12e Downloader non può salvare accanto all’originale (permesso negato).",
   "Or choose files. 12e Downloader fits each one under the size you pick.": "Oppure scegli i file. 12e Downloader porta ciascuno sotto la dimensione che scegli.",
   "The first time, 12e Downloader downloads the converter (FFmpeg).": "La prima volta, 12e Downloader scarica il convertitore (FFmpeg).",
-  "Pick a quality with the Download button next to a video, or open the “Download video” window in 12e Downloader, and choose “Only a part”: where it starts and ends, or a chapter. 12e Downloader downloads only that part.": "Scegli una qualità con il pulsante Download accanto a un video, oppure apri la finestra «Scarica video» in 12e Downloader, e scegli «Solo una parte»: dove inizia e dove finisce, o un capitolo. 12e Downloader scarica solo quella parte."
+  "Pick a quality with the Download button next to a video, or open the “Download video” window in 12e Downloader, and choose “Only a part”: where it starts and ends, or a chapter. 12e Downloader downloads only that part.": "Scegli una qualità con il pulsante Download accanto a un video, oppure apri la finestra «Scarica video» in 12e Downloader, e scegli «Solo una parte»: dove inizia e dove finisce, o un capitolo. 12e Downloader scarica solo quella parte.",
+  "Selected: {selected}": "Selected: {selected}",
+  "Total: {size}": "Total: {size}",
+  "Search downloads…": "Search downloads…",
+  "Delete All": "Delete All"
 }
