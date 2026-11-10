@@ -805,7 +805,6 @@
   "Maximize": "Maximalizovat",
   "Close to tray": "Zavřít do oznamovací oblasti",
   "Download actions": "Akce stahování",
-  "Could not remove completed downloads": "Dokončená stahování se nepodařilo odebrat",
   "Search downloads": "Hledat stahování",
   "You have {version}.": "Máte verzi {version}.",
   "What’s new": "Co je nového",
@@ -1174,7 +1173,6 @@
   "Installing 12e Downloader {version}…": "Instaluje se 12e Downloader {version}…",
   "Downloading 12e Downloader {version}… {percent}%": "Stahuje se 12e Downloader {version}… {percent} %",
   "12e Downloader restarts by itself and your downloads continue.": "12e Downloader se restartuje sám a stahování budou pokračovat.",
-  "12e Downloader checks the address and shows the Download File dialog.": "12e Downloader adresu ověří a zobrazí dialog Stáhnout soubor.",
   "Drop links here to download. Double-click to open 12e Downloader.": "Přetáhněte sem odkazy ke stažení. Dvojklikem otevřete 12e Downloader.",
   "Drop links here · double-click opens 12e Downloader": "Přetáhněte sem odkazy · dvojklik otevře 12e Downloader",
   "Nothing downloading — open 12e Downloader": "Nic se nestahuje — otevřít 12e Downloader",
@@ -1195,5 +1193,10 @@
   "Selected: {selected}": "Selected: {selected}",
   "Total: {size}": "Total: {size}",
   "Search downloads…": "Search downloads…",
-  "Delete All": "Delete All"
+  "Add Download": "Add Download",
+  "Could not resume downloads": "Could not resume downloads",
+  "Resume All": "Resume All",
+  "Pause All": "Pause All",
+  "Remove Selected": "Remove Selected",
+  "12e downloader checks the address and shows the Download File dialog.": "12e downloader checks the address and shows the Download File dialog."
 }
