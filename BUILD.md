@@ -1,106 +1,63 @@
-# Building Prism (Windows & Linux)
+# Building Prism (Windows x64 portable)
 
-macOS has its own guide: [`docs/BUILD_MACOS.md`](docs/BUILD_MACOS.md).
+Prism is released as a **Windows 10/11 x64 portable application only**. The release ZIP contains
+`prism.exe`, the native messaging host, browser extensions, and a `data` folder created on
+first launch. No installer is generated.
 
 ## Prerequisites
 
 | Tool | Version | Notes |
 |---|---|---|
-| Rust | stable ≥ 1.88 (tested 1.99) | `rustup default stable` |
-| Node.js | 24 LTS (npm 11) | builds the UI and the extension |
-| Windows | Visual Studio 2022 Build Tools with "Desktop development with C++", Windows 10/11 SDK | WebView2 runtime is preinstalled on Windows 10/11 |
-| Linux (Debian/Ubuntu 22.04+) | `sudo apt install build-essential curl wget file libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev libxdo-dev patchelf rpm` | `rpm` only needed to build .rpm |
-| Optional | `ffmpeg` on PATH | otherwise Prism downloads a verified build on first video download |
+| Rust | stable ≥ 1.88 | Install with rustup |
+| Node.js | 24 LTS | Builds the UI and browser extensions |
+| Windows | Windows 10/11 x64 | Visual Studio 2022 Build Tools with Desktop development with C++ and Windows SDK |
+| Optional | `ffmpeg.exe` on PATH | Otherwise Prism downloads a verified build on first video download |
 
-## One-time setup
+## Setup
 
-```bash
-git clone <repo> prism && cd prism
+```powershell
+git clone <repo> prism
+cd prism
 npm ci --prefix app
 npm ci --prefix extension
 ```
 
-## Development
-
-```bash
-# Terminal 1 – everything (sidecar + Vite + Tauri with hot reload)
-cd app
-npm run tauri:dev
-```
-
-The UI also runs in a normal browser with a built-in demo backend (`npm run dev` in `app/`,
-then open http://localhost:1420) — handy for UI work without compiling Rust.
-
-## Tests
-
-```bash
-cargo test --workspace --exclude prism-app        # engine, core, video, torrent, native host
-cargo clippy --workspace --all-targets -- -D warnings
-npm test --prefix app && npm run typecheck --prefix app
-npm test --prefix extension && npm run typecheck --prefix extension
-npm run e2e --prefix extension                    # browser ↔ native host ↔ app (Playwright)
-```
-
-## Release builds
-
-```bash
-npm run build --prefix extension      # extension/build/{chromium,firefox} + zips
-cd app
-npm run tauri:build                   # builds the native host sidecar, the UI and all bundles
-```
-
-Outputs (in `target/release/bundle/`):
-
-| Platform | Artifacts |
-|---|---|
-| Windows | `nsis/Prism_<ver>_x64-setup.exe`, `msi/Prism_<ver>_x64_en-US.msi` |
-| Linux | `deb/Prism_<ver>_amd64.deb`, `rpm/Prism-<ver>-1.x86_64.rpm`, `appimage/Prism_<ver>_amd64.AppImage` |
-
-Windows portable zip (after `tauri:build`):
+## Development and tests
 
 ```powershell
-./scripts/make-portable.ps1          # -> packaging/out/Prism-<ver>-windows-x64-portable.zip
+cargo test --workspace --exclude prism-app
+cargo clippy --workspace --all-targets -- -D warnings
+npm run build --prefix extension
+npm test --prefix app
+npm run typecheck --prefix app
+npm test --prefix extension
+npm run typecheck --prefix extension
+npm run e2e --prefix extension
 ```
 
-Building only some bundles: `npx tauri build --bundles nsis` (or `msi`, `deb`, `rpm`, `appimage`).
+## Build the portable release
 
-### Building Linux packages on Windows (WSL)
-
-The Linux bundles were produced from WSL2 Ubuntu 22.04:
-
-```bash
-wsl -d Ubuntu-22.04
-# inside WSL, on a Linux filesystem path (not /mnt/c, which is very slow):
-git clone /mnt/c/path/to/prism ~/prism && cd ~/prism
-curl --proto '=https' -sSf https://sh.rustup.rs | sh -s -- -y
-# Node 24 via nvm or NodeSource, then the apt packages above
-npm ci --prefix app && npm ci --prefix extension
-npm run build --prefix extension && (cd app && npm run tauri:build)
+```powershell
+npm ci --prefix app
+npm ci --prefix extension
+npm run build --prefix extension
+node scripts/build-sidecar.mjs --target x86_64-pc-windows-msvc
+cd app
+npx tauri build --target x86_64-pc-windows-msvc --no-bundle
+cd ..
+./scripts/make-portable.ps1 -Target x86_64-pc-windows-msvc
 ```
 
-## What the installers do
-
-* **NSIS / MSI (Windows):** install per user (NSIS) or per machine (MSI), add Start-menu
-  entries and an uninstaller, associate `.torrent` files, register the `magnet:` handler,
-  and run `prism-native-host register` so Chrome, Edge, Brave, Opera, Vivaldi, Chromium
-  and Firefox can reach the app. Uninstalling removes the registrations.
-* **deb / rpm (Linux):** install `/usr/bin/prism` + `/usr/bin/prism-native-host`, a
-  `.desktop` entry, and system-wide native messaging manifests for Chrome, Chromium, Edge
-  and Firefox (`packaging/linux/postinst.sh`). Brave, Vivaldi and Opera get per-user
-  manifests written by the app on every start.
-* **AppImage:** the app copies the host to `~/.local/share/prism/bin/` (the AppImage mount
-  path changes every run) and registers per-user manifests.
-* **Autostart** is a setting (on by default) handled by the app itself.
+The ZIP is written to `packaging/out/Prism-<version>-windows-x64-portable.zip`. It runs without
+an installer and stores settings, history, and download state in its own `data` folder.
 
 ## Continuous integration
 
-`.github/workflows/ci.yml` runs tests, clippy and type checks on Windows, Linux and macOS.
-`.github/workflows/release.yml` builds all bundles (Windows x64, Linux x64, macOS arm64 and
-x64) on tag push and uploads them as workflow artifacts.
+GitHub Actions runs the Rust, frontend, extension, and Chromium end-to-end checks on Windows.
+Release tags produce only the signed Windows x64 portable ZIP (plus its signature, update
+manifest, and checksum).
 
 ## Browser extension
 
-See [`extension/README.md`](extension/README.md). In short: load
-`extension/build/chromium` unpacked in Chromium-based browsers (Developer mode), and
-`extension/build/firefox/manifest.json` as a temporary add-on in Firefox (or sign the
-generated zip on addons.mozilla.org as an unlisted add-on for a permanent install).
+The portable ZIP includes Chromium-based and Firefox extension builds. Load the appropriate
+unpacked extension in the browser's extension management page and enable developer mode.

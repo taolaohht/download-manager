@@ -6,15 +6,14 @@ welcome.
 ## Ways to help
 
 * ⭐ Star the repo and tell people about it — it genuinely helps.
-* 🐞 [Report bugs](https://github.com/FortoGraphy/prism-download-manager/issues/new/choose) —
+* 🐞 [Report bugs](https://github.com/taolaohht/download-manager/issues/new/choose) —
   Settings → Advanced → **Export diagnostics** gives us logs without anything private.
-* 💡 Suggest features in [Discussions](https://github.com/FortoGraphy/prism-download-manager/discussions).
+* 💡 Suggest features in [Discussions](https://github.com/taolaohht/download-manager/discussions).
 * 🧑‍💻 Send a pull request (see below).
 
 ## Development setup
 
-Requirements and full build instructions: [BUILD.md](BUILD.md) (Windows, Linux) and
-[docs/BUILD_MACOS.md](docs/BUILD_MACOS.md).
+Requirements and full build instructions: [BUILD.md](BUILD.md). Official desktop builds and CI target Windows 10/11 x64 only.
 
 ```bash
 npm ci --prefix app && npm ci --prefix extension

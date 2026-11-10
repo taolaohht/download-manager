@@ -9,7 +9,7 @@ import { useApp } from "../lib/store";
 import { toast } from "../lib/ui";
 import { scheduleUpdateChecks, windowEnv } from "../lib/update-schedule";
 
-const SITE = "https://prismdl.site/#download";
+const SITE = `${REPO_URL}/releases/latest`;
 const RELEASES = `${REPO_URL}/releases`;
 
 interface UpdateState {

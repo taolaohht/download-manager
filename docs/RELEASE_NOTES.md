@@ -1,7 +1,8 @@
 # Prism 1.2.4 — One beam. Many rays.
 
-A fast, open-source download manager for Windows, Linux and macOS, with browser integration
-and video downloads.
+A fast, open-source download manager with browser integration and video downloads.
+
+> **Current distribution:** This repository publishes Prism only as a **Windows 10/11 x64 portable ZIP**. Linux and macOS desktop builds are no longer produced or supported here. Older platform-specific notes below are historical.
 
 ## What's new in 1.2.4
 
@@ -163,19 +164,16 @@ and video downloads.
 
 ## Downloads
 
-| Your system | File |
-|---|---|
-| Windows 10 / 11 | `Prism_1.1.7_x64-setup.exe` (recommended) · `Prism_1.1.7_x64_en-US.msi` (all users) · `Prism-1.1.7-windows-x64-portable.zip` |
-| macOS — Apple Silicon | `Prism_1.1.7_aarch64.dmg` |
-| macOS — Intel | `Prism_1.1.7_x64.dmg` |
-| Ubuntu / Debian / Mint | `Prism_1.1.7_amd64.deb` |
-| Fedora / openSUSE | `Prism-1.1.7-1.x86_64.rpm` |
-| Any Linux | `Prism_1.1.7_amd64.AppImage` |
-| Browser extension | [Chrome Web Store](https://chromewebstore.google.com/detail/prism-download-manager/mmcdeiglkbfbicdjboocmhehodogilfl) (Chrome, Edge, Brave, Opera, Vivaldi) · `prism-firefox.zip` (Firefox) |
+Download the **Windows 10/11 x64 portable ZIP** from the
+[latest release](https://github.com/taolaohht/download-manager/releases/latest).
 
-Step-by-step guides: [installing Prism](https://github.com/FortoGraphy/prism-download-manager/blob/main/docs/guide/installation.md) ·
-[installing the browser extension](https://github.com/FortoGraphy/prism-download-manager/blob/main/docs/guide/browser-extension.md).
-Verify downloads with `SHA256SUMS.txt`.
+1. Extract the ZIP to any folder.
+2. Run `prism.exe`.
+3. Keep the `data` folder beside the executable when updating to preserve settings and history.
+
+No installer or administrator permission is required. This is the only supported desktop build in this repository.
+
+Browser extension: [Chrome Web Store](https://chromewebstore.google.com/detail/prism-download-manager/mmcdeiglkbfbicdjboocmhehodogilfl) for Chromium browsers; the ZIP also includes unpacked Chromium and Firefox builds for manual installation.
 
 ## What's inside
 
@@ -197,15 +195,9 @@ Verify downloads with `SHA256SUMS.txt`.
 
 ## Known limitations
 
-* The installers are **not code-signed** (signing certificates are paid):
-  * Windows SmartScreen: click **More info → Run anyway**.
-  * macOS: run `xattr -dr com.apple.quarantine /Applications/Prism.app` once (or System
-    Settings → Privacy & Security → **Open Anyway**). In-app updates don't need this again.
+* The portable ZIP is not code-signed with a Windows Authenticode certificate. Windows SmartScreen may show a warning; download only from the official GitHub release.
 * Firefox: Prism isn't in Firefox Add-ons yet. Its extension is loaded by hand, and Firefox
   keeps unsigned add-ons only until restart, except in Developer Edition / Nightly / ESR.
-* macOS builds are produced by CI and tested there; feedback from real Macs is very welcome.
-* Flatpak browsers on Linux can't talk to native apps (a browser sandbox limitation) — use
-  the deb/rpm version of your browser.
 
 Found a bug? [Open an issue](https://github.com/FortoGraphy/prism-download-manager/issues/new/choose).
 Like Prism? A ⭐ helps a lot.
