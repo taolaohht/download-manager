@@ -1,5 +1,5 @@
-// Builds prism-native-host and places it where Tauri's `externalBin` expects it:
-// app/src-tauri/binaries/prism-native-host-<target-triple>[.exe]
+// Builds 12e-native-host and places it where Tauri's `externalBin` expects it:
+// app/src-tauri/binaries/12e-native-host-<target-triple>[.exe]
 //
 // Usage: node scripts/build-sidecar.mjs [--debug] [--target <triple>]
 import { execFileSync } from "node:child_process";
@@ -14,14 +14,14 @@ const targetIdx = args.indexOf("--target");
 const hostTriple = execFileSync("rustc", ["-vV"], { encoding: "utf8" }).match(/host: (\S+)/)[1];
 const triple = targetIdx >= 0 ? args[targetIdx + 1] : process.env.TAURI_ENV_TARGET_TRIPLE || hostTriple;
 
-const cargoArgs = ["build", "-p", "prism-native-host", "--target", triple];
+const cargoArgs = ["build", "-p", "12e-native-host", "--target", triple];
 if (!debug) cargoArgs.push("--release");
 execFileSync("cargo", cargoArgs, { cwd: root, stdio: "inherit" });
 
 const ext = triple.includes("windows") ? ".exe" : "";
-const built = join(root, "target", triple, debug ? "debug" : "release", `prism-native-host${ext}`);
+const built = join(root, "target", triple, debug ? "debug" : "release", `12e-native-host${ext}`);
 const outDir = join(root, "app", "src-tauri", "binaries");
 mkdirSync(outDir, { recursive: true });
-const out = join(outDir, `prism-native-host-${triple}${ext}`);
+const out = join(outDir, `12e-native-host-${triple}${ext}`);
 copyFileSync(built, out);
 console.log(`sidecar: ${out}`);
