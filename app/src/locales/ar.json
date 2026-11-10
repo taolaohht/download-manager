@@ -916,7 +916,6 @@
   "12e Downloader restarts by itself and your downloads continue.": "يُعيد 12e Downloader تشغيل نفسه وتستمر تنزيلاتك.",
   "Download address": "عنوان التنزيل",
   "https://… , ftp://… or magnet:?…": "https://… أو ftp://… أو magnet:?…",
-  "Torrent — you will choose the files next.": "تورنت — ستختار الملفات في الخطوة التالية.",
   "Use a user name and password": "استخدام اسم مستخدم وكلمة مرور",
   "No links match the filter.": "لا توجد روابط مطابقة لعامل التصفية.",
   "Category folders (default)": "مجلدات الفئات (افتراضي)",
@@ -1244,11 +1243,12 @@
   "Resume All": "Resume All",
   "Pause All": "Pause All",
   "Remove Selected": "Remove Selected",
-  "12e downloader checks the address and shows the Download File dialog.": "12e downloader checks the address and shows the Download File dialog.",
   "Source": "Source",
   "Video (yt-dlp)": "Video (yt-dlp)",
   "Torrent (Magnet)": "Torrent (Magnet)",
   "Paste a video or playlist URL to choose quality and format.": "Paste a video or playlist URL to choose quality and format.",
   "Paste a magnet link or torrent URL. You can choose files next.": "Paste a magnet link or torrent URL. You can choose files next.",
-  "The download details and destination are confirmed in the next step.": "The download details and destination are confirmed in the next step."
+  "The download details and destination are confirmed in the next step.": "The download details and destination are confirmed in the next step.",
+  "URL": "URL",
+  "Hugging Face model or dataset.": "Hugging Face model or dataset."
 }
