@@ -790,7 +790,6 @@
   "All downloads": "Tüm indirmeler",
   "Unfinished": "Tamamlanmamış",
   "Total download speed": "Toplam indirme hızı",
-  "{active} active · {queued} queued": "{active} etkin · {queued} sırada",
   "{queues} running": "Çalışan: {queues}",
   "{queue} at {time}": "{queue}, saat {time}",
   "Limit {value}": "Sınır {value}",
@@ -818,13 +817,7 @@
   "Maximize": "Ekranı kapla",
   "Close to tray": "Sistem tepsisine gizle",
   "Download actions": "İndirme eylemleri",
-  "Add a download address": "İndirme adresi ekle",
-  "Stop all": "Tümünü durdur",
-  "Remove completed from the list": "Tamamlananları listeden kaldır",
   "Could not remove completed downloads": "Tamamlanan indirmeler kaldırılamadı",
-  "Start {name}": "Başlat: {name}",
-  "Stop {name}": "Durdur: {name}",
-  "Speed limiter on · {limit}": "Hız sınırlayıcı açık · {limit}",
   "Search downloads": "İndirmelerde ara",
   "12e Downloader {version} is ready.": "12e Downloader {version} hazır.",
   "You have {version}.": "Sizdeki sürüm: {version}.",
@@ -1152,5 +1145,9 @@
   "What's inside a ZIP": "Bir ZIP'in içinde ne var",
   "The “Download file” window shows the files in a ZIP before you download it, and can download just one of them.": "«Dosya indir» penceresi bir ZIP'teki dosyaları indirmeden önce gösterir ve yalnızca birini indirebilir.",
   "Finished means finished": "Bitti demek bitti",
-  "A download that finished while the window was open sometimes still looked like it was downloading.": "Pencere açıkken biten bir indirme bazen hâlâ iniyormuş gibi görünüyordu."
+  "A download that finished while the window was open sometimes still looked like it was downloading.": "Pencere açıkken biten bir indirme bazen hâlâ iniyormuş gibi görünüyordu.",
+  "Selected: {selected}": "Selected: {selected}",
+  "Total: {size}": "Total: {size}",
+  "Search downloads…": "Search downloads…",
+  "Delete All": "Delete All"
 }
