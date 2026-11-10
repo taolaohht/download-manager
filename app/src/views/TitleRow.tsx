@@ -20,6 +20,7 @@ export function TitleRow() {
   const filter = useUi((s) => s.filter);
   const queues = useApp((s) => s.queues);
   const density = useApp((s) => s.settings?.appearance.density ?? "comfortable");
+  const search = useApp((s) => s.search);
 
   // Counts for the segmented filter within the current view (search ignored on purpose).
   const stats = useMemo(() => {
@@ -89,7 +90,7 @@ export function TitleRow() {
         </button>
       )}
       <span className="spacer" />
-      <label className="input filter-search"><Icon name="search" size={17} /><input value={useApp.getState().search} placeholder={t("Search downloads…")} aria-label={t("Search downloads")} onChange={(e) => useApp.getState().setSearch(e.target.value)} /></label>
+      <label className="input filter-search"><Icon name="search" size={17} /><input value={search} placeholder={t("Search downloads…")} aria-label={t("Search downloads")} onChange={(e) => useApp.getState().setSearch(e.target.value)} /></label>
       <Segmented<StatusFilter>
         label={t("Filter by status")}
         value={filter}
