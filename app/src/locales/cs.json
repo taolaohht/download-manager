@@ -816,7 +816,6 @@
   "The update couldn't be installed": "Aktualizaci se nepodařilo nainstalovat",
   "Download address": "Adresa ke stažení",
   "https://… , ftp://… or magnet:?…": "https://… , ftp://… nebo magnet:?…",
-  "Torrent — you will choose the files next.": "Torrent — soubory vyberete v dalším kroku.",
   "Use a user name and password": "Použít uživatelské jméno a heslo",
   "No links match the filter.": "Filtru neodpovídají žádné odkazy.",
   "Category folders (default)": "Složky kategorií (výchozí)",
@@ -1198,11 +1197,12 @@
   "Resume All": "Resume All",
   "Pause All": "Pause All",
   "Remove Selected": "Remove Selected",
-  "12e downloader checks the address and shows the Download File dialog.": "12e downloader checks the address and shows the Download File dialog.",
   "Source": "Source",
   "Video (yt-dlp)": "Video (yt-dlp)",
   "Torrent (Magnet)": "Torrent (Magnet)",
   "Paste a video or playlist URL to choose quality and format.": "Paste a video or playlist URL to choose quality and format.",
   "Paste a magnet link or torrent URL. You can choose files next.": "Paste a magnet link or torrent URL. You can choose files next.",
-  "The download details and destination are confirmed in the next step.": "The download details and destination are confirmed in the next step."
+  "The download details and destination are confirmed in the next step.": "The download details and destination are confirmed in the next step.",
+  "URL": "URL",
+  "Hugging Face model or dataset.": "Hugging Face model or dataset."
 }
