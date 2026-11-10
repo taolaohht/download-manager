@@ -37,7 +37,7 @@ export function TitleRow() {
     const f = (k: StatusFilter) => scoped.filter((i) => matchesFilter(st.progress[i.id]?.status ?? i.status, k, i.queueId)).length;
     return {
       total: scoped.length,
-      active: scoped.filter((i) => isActive(i.status)).length,
+      active: scoped.filter((i) => isActive(st.progress[i.id]?.status ?? i.status)).length,
       bytes: scoped.reduce((sum, i) => sum + (i.size ?? 0), 0),
       byFilter: { all: scoped.length, active: f("active"), queues: scoped.filter((i) => !!i.queueId).length, queued: f("queued"), completed: f("completed"), failed: f("failed") },
     };
