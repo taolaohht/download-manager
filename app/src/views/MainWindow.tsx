@@ -107,7 +107,7 @@ export function MainWindow() {
           {!compact && <ConnectBanner onOpen={() => useUi.getState().openSheet({ kind: "settings", section: "browser" })} />}
         </div>
         <DownloadTable />
-        {!compact && <BottomPane />
+        {!compact && <BottomPane />}
         <StatusBar />
       </main>
       <PostActionBanner />
