@@ -24,6 +24,23 @@ export function actionableIds(
   });
 }
 
+/** Keep unrelated selections and preserve the selection when the backend rejects deletion. */
+export async function deleteAndPreserveSelection(
+  ids: string[],
+  remove: () => Promise<void>,
+  getSelection: () => string[],
+  select: (ids: string[]) => void,
+  onError: (error: unknown) => void,
+): Promise<void> {
+  try {
+    await remove();
+    const deleted = new Set(ids);
+    select(getSelection().filter((id) => !deleted.has(id)));
+  } catch (error) {
+    onError(error);
+  }
+}
+
 function currentStatuses(ids: string[]): Record<string, Status | undefined> {
   const st = useApp.getState();
   return Object.fromEntries(ids.map((id) => [id, st.progress[id]?.status ?? st.items[id]?.status]));
@@ -56,10 +73,14 @@ export const actions = {
     }
     void actions.delete(ids, false, !(st.settings?.general.useTrash ?? true));
   },
-  delete: async (ids: string[], deleteFiles: boolean, permanent: boolean) => {
-    await attempt(api.deleteItems(ids, deleteFiles, permanent), t("Could not delete"));
-    useApp.getState().select([]);
-  },
+  delete: (ids: string[], deleteFiles: boolean, permanent: boolean) =>
+    deleteAndPreserveSelection(
+      ids,
+      () => api.deleteItems(ids, deleteFiles, permanent),
+      () => useApp.getState().selection,
+      (selection) => useApp.getState().select(selection),
+      (error) => toast(t("Could not delete"), { kind: "error", body: error instanceof Error ? error.message : String(error) }),
+    ),
   restore: async (ids: string[]) => {
     const unfinished = items(ids).filter((i) => i.status !== "completed").length;
     try {

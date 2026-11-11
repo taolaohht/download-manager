@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { actionableIds } from "./actions";
+import { actionableIds, deleteAndPreserveSelection } from "./actions";
 import type { Status } from "./types";
 
 describe("bulk download actions", () => {
@@ -23,5 +23,35 @@ describe("bulk download actions", () => {
     };
     expect(actionableIds(["completed", "connecting", "idle"], statuses, "pause")).toEqual(["connecting"]);
     expect(actionableIds(["completed", "connecting", "idle"], statuses, "resume")).toEqual(["idle"]);
+  });
+});
+
+describe("delete selection handling", () => {
+  it("removes only deleted ids after the backend succeeds", async () => {
+    let selection = ["a", "b", "c"];
+    let removed = false;
+    await deleteAndPreserveSelection(
+      ["b"],
+      async () => { removed = true; },
+      () => selection,
+      (next) => { selection = next; },
+      () => { throw new Error("unexpected delete failure"); },
+    );
+    expect(removed).toBe(true);
+    expect(selection).toEqual(["a", "c"]);
+  });
+
+  it("keeps the selection intact when the backend rejects deletion", async () => {
+    let selection = ["a", "b"];
+    let failure: unknown;
+    await deleteAndPreserveSelection(
+      ["a"],
+      async () => { throw new Error("file is locked"); },
+      () => selection,
+      (next) => { selection = next; },
+      (error) => { failure = error; },
+    );
+    expect(selection).toEqual(["a", "b"]);
+    expect(failure).toEqual(new Error("file is locked"));
   });
 });
