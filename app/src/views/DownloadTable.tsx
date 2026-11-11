@@ -332,7 +332,7 @@ const Row = memo(function Row({ id, index, top, cols, selected, fresh, compact, 
         </button>
       </div>
       <div className="row-actions" onMouseDown={(e) => e.stopPropagation()} onDoubleClick={(e) => e.stopPropagation()}>
-        {item.status === "completed" ? (
+        {status === "completed" ? (
           <IconButton icon="open-file" label={t("Open")} size={16} onClick={() => actions.open(id)} />
         ) : canPause(status) ? (
           <IconButton icon="pause" label={t("Pause")} size={16} onClick={() => actions.pause([id])} />
