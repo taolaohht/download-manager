@@ -9,6 +9,7 @@ import { t } from "../lib/i18n";
 import { useApp } from "../lib/store";
 import { attempt, toast, useUi } from "../lib/ui";
 import { BottomPane } from "./BottomPane";
+import { BrandTile } from "../components/LogoMark";
 import { useWhatsNew } from "./sheets/WhatsNewSheet";
 import { ConnectBanner } from "./BrowserConnect";
 import { Dialogs } from "./dialogs/Dialogs";
@@ -16,7 +17,6 @@ import { DownloadTable } from "./DownloadTable";
 import { Onboarding } from "./Onboarding";
 import { PostActionBanner } from "./PostActionBanner";
 import { Sheets } from "./Sheets";
-import { Sidebar } from "./Sidebar";
 import { StatusBar } from "./StatusBar";
 import { TitleRow } from "./TitleRow";
 import { UpdateBanner } from "./UpdateBanner";
@@ -91,8 +91,15 @@ export function MainWindow() {
 
   return (
     <div className={compact ? "win canvas win--compact" : "win canvas"} onDragOver={onDragOver} onDragLeave={onDragLeave} onDrop={onDrop}>
-      {!compact && <Sidebar />}
-      <main className="sheet" style={{ ["--bottom-h" as string]: detailsOpen ? `${bottomHeight}px` : "0px" }}>
+      <main className="sheet sheet--reference" style={{ ["--bottom-h" as string]: detailsOpen ? `${bottomHeight}px` : "0px" }}>
+        <header className="app-header" data-tauri-drag-region>
+          <div className="app-header__brand"><BrandTile size={42} /><div><strong>12e downloader</strong></div></div>
+          <div className="app-header__caption">
+            <button type="button" aria-label={t("Minimize")} onClick={() => void win.minimize()}><Icon name="minimize" size={17} /></button>
+            <button type="button" aria-label={t("Maximize")} onClick={() => void win.toggleMaximize()}><Icon name="maximize" size={16} /></button>
+            <button type="button" aria-label={t("Close to tray")} onClick={() => void win.close()}><Icon name="close" size={18} /></button>
+          </div>
+        </header>
         <Toolbar />
         <TitleRow />
         <div className="banner-stack">

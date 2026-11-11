@@ -237,6 +237,7 @@ export function visibleItems(st: AppState): DownloadItem[] {
   const q = search.trim().toLowerCase();
   const all = Object.values(st.items);
   const filtered = all.filter((i) => {
+    const status = st.progress[i.id]?.status ?? i.status;
     if (view.kind === "trash") {
       if (!i.trashed) return false;
     } else if (i.trashed) return false;
@@ -245,10 +246,10 @@ export function visibleItems(st: AppState): DownloadItem[] {
         if (i.category !== view.id) return false;
         break;
       case "status":
-        if (view.id === "finished" && i.status !== "completed") return false;
-        if (view.id === "unfinished" && i.status === "completed") return false;
-        if (view.id === "active" && !isActive(i.status) && i.status !== "queued") return false;
-        if (view.id === "failed" && i.status !== "failed") return false;
+        if (view.id === "finished" && status !== "completed") return false;
+        if (view.id === "unfinished" && status === "completed") return false;
+        if (view.id === "active" && !isActive(status) && status !== "queued") return false;
+        if (view.id === "failed" && status !== "failed") return false;
         break;
       case "queue":
         if (i.queueId !== view.id) return false;
@@ -269,7 +270,7 @@ export function visibleItems(st: AppState): DownloadItem[] {
       case "size":
         return i.size ?? -1;
       case "status":
-        return i.status;
+        return prog[i.id]?.status ?? i.status;
       case "progress":
         return prog[i.id]?.fraction ?? (i.size ? (prog[i.id]?.downloaded ?? i.downloaded) / i.size : i.status === "completed" ? 1 : 0);
       case "speed":
@@ -305,10 +306,11 @@ export function counts(st: AppState) {
       continue;
     }
     c.all++;
-    if (i.status === "completed") c.finished++;
+    const status = st.progress[i.id]?.status ?? i.status;
+    if (status === "completed") c.finished++;
     else c.unfinished++;
-    if (isActive(i.status) || i.status === "queued") c.active++;
-    if (i.status === "failed") c.failed++;
+    if (isActive(status) || status === "queued") c.active++;
+    if (status === "failed") c.failed++;
     c.byCategory[i.category] = (c.byCategory[i.category] ?? 0) + 1;
     if (i.queueId) c.byQueue[i.queueId] = (c.byQueue[i.queueId] ?? 0) + 1;
   }

@@ -17,13 +17,14 @@ export function TitleRow() {
   const title = useViewTitle();
   const view = useApp((s) => s.view);
   const items = useApp((s) => s.items);
+  const progress = useApp((s) => s.progress);
   const filter = useUi((s) => s.filter);
   const queues = useApp((s) => s.queues);
   const density = useApp((s) => s.settings?.appearance.density ?? "comfortable");
+  const search = useApp((s) => s.search);
 
   // Counts for the segmented filter within the current view (search ignored on purpose).
   const stats = useMemo(() => {
-    const st = useApp.getState();
     const scoped = Object.values(items).filter((i) => {
       if (view.kind === "trash") return i.trashed;
       if (i.trashed) return false;
@@ -33,14 +34,14 @@ export function TitleRow() {
       if (view.kind === "status") return view.id === "finished" ? i.status === "completed" : view.id === "unfinished" ? i.status !== "completed" : true;
       return true;
     });
-    const f = (k: StatusFilter) => scoped.filter((i) => matchesFilter(st.progress[i.id]?.status ?? i.status, k)).length;
+    const f = (k: StatusFilter) => scoped.filter((i) => matchesFilter(progress[i.id]?.status ?? i.status, k, i.queueId)).length;
     return {
       total: scoped.length,
-      active: scoped.filter((i) => isActive(i.status)).length,
+      active: scoped.filter((i) => isActive(progress[i.id]?.status ?? i.status)).length,
       bytes: scoped.reduce((sum, i) => sum + (i.size ?? 0), 0),
-      byFilter: { all: scoped.length, active: f("active"), queued: f("queued"), completed: f("completed"), failed: f("failed") },
+      byFilter: { all: scoped.length, active: f("active"), queues: scoped.filter((i) => !!i.queueId).length, queued: f("queued"), completed: f("completed"), failed: f("failed") },
     };
-  }, [items, view]);
+  }, [items, view, progress]);
 
   const queue = view.kind === "queue" ? queues.find((q) => q.id === view.id) : undefined;
   const columns = () => {
@@ -88,7 +89,6 @@ export function TitleRow() {
           <Icon name="grabber" size={15} /> {t("Open project")}
         </button>
       )}
-      <span className="spacer" />
       <Segmented<StatusFilter>
         label={t("Filter by status")}
         value={filter}
@@ -96,9 +96,10 @@ export function TitleRow() {
         options={[
           { value: "all", label: t("All"), count: stats.byFilter.all },
           { value: "active", label: t("Active"), count: stats.byFilter.active },
+          { value: "queues", label: t("Queues"), count: stats.byFilter.queues },
           { value: "queued", label: t("Waiting"), count: stats.byFilter.queued },
-          { value: "completed", label: t("Completed"), count: stats.byFilter.completed },
-          { value: "failed", label: t("Failed"), count: stats.byFilter.failed },
+          { value: "completed", label: t("Done"), count: stats.byFilter.completed },
+          { value: "failed", label: t("Fail"), count: stats.byFilter.failed },
         ]}
       />
       <IconButton
@@ -109,6 +110,8 @@ export function TitleRow() {
         onClick={() => void patchSettings({ appearance: { density: density === "compact" ? "comfortable" : "compact" } })}
       />
       <IconButton variant="button" icon="columns" size={16} label={t("Columns")} onClick={(e) => openMenuAt(e.currentTarget, [{ heading: t("Visible columns") }, ...columns()])} />
+      <span className="spacer" />
+      <label className="input filter-search"><Icon name="search" size={17} /><input value={search} placeholder={t("Search downloads…")} aria-label={t("Search downloads")} onChange={(e) => useApp.getState().setSearch(e.target.value)} /></label>
     </div>
   );
 }

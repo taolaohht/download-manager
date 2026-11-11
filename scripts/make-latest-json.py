@@ -2,7 +2,7 @@
 
     python scripts/make-latest-json.py <directory with portable ZIP and .sig> <tag> <notes.md> > latest.json
 
-Portable Prism uses this manifest to detect new versions, then opens the download page
+The 12e Downloader portable app uses this manifest to detect new versions, then opens the download page
 instead of replacing its own files.
 """
 import datetime
@@ -16,10 +16,10 @@ version = tag.lstrip("v")
 base = os.environ.get("UPDATE_BASE_URL") or f"https://github.com/taolaohht/download-manager/releases/download/{tag}/"
 
 bundle = next(
-    (p for p in src.rglob("*-windows-x64-portable.zip") if p.name.startswith("Prism-")),
+    (p for p in src.rglob("*-windows-x64-portable.zip") if p.name.startswith("12e-Downloader-")),
     None,
 )
-if bundle and not bundle.name.startswith(f"Prism-{version}-"):
+if bundle and not bundle.name.startswith(f"12e-Downloader-{version}-"):
     sys.exit(
         f"{bundle.name} doesn't match tag {tag}: bump the version in tauri.conf.json, Cargo.toml and app/package.json"
     )

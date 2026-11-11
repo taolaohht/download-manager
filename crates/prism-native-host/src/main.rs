@@ -34,7 +34,7 @@ fn main() -> ExitCode {
             ExitCode::SUCCESS
         }
         Invocation::Version => {
-            println!("prism-native-host {}", prism_native_host::VERSION);
+            println!("12e-native-host {}", prism_native_host::VERSION);
             ExitCode::SUCCESS
         }
         Invocation::Register(r) => {

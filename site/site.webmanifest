@@ -1,6 +1,6 @@
 {
-  "name": "Prism Download Manager",
-  "short_name": "Prism",
+  "name": "12e downloader",
+  "short_name": "12e",
   "description": "The fast, beautiful, open-source download manager.",
   "start_url": "./",
   "scope": "./",

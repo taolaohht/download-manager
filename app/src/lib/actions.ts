@@ -5,24 +5,59 @@ import { t } from "./i18n";
 import { canPause, canResume, isTorrentLink } from "./present";
 import { hexEncode } from "./route";
 import { useApp } from "./store";
-import type { Settings } from "./types";
+import type { Settings, Status } from "./types";
 import { attempt, toast, useUi } from "./ui";
 import { copyText } from "./win";
 
 const items = (ids: string[]) => ids.map((id) => useApp.getState().items[id]).filter(Boolean);
 
+/** Resolve the live core status before enabling bulk actions; progress events can be newer
+ * than the last persisted item snapshot. */
+export function actionableIds(
+  ids: string[],
+  statuses: Record<string, Status | undefined>,
+  action: "pause" | "resume",
+): string[] {
+  return ids.filter((id) => {
+    const status = statuses[id];
+    return status !== undefined && (action === "pause" ? canPause(status) : canResume(status) || status === "queued");
+  });
+}
+
+/** Keep unrelated selections and preserve the selection when the backend rejects deletion. */
+export async function deleteAndPreserveSelection(
+  ids: string[],
+  remove: () => Promise<void>,
+  getSelection: () => string[],
+  select: (ids: string[]) => void,
+  onError: (error: unknown) => void,
+): Promise<void> {
+  try {
+    await remove();
+    const deleted = new Set(ids);
+    select(getSelection().filter((id) => !deleted.has(id)));
+  } catch (error) {
+    onError(error);
+  }
+}
+
+function currentStatuses(ids: string[]): Record<string, Status | undefined> {
+  const st = useApp.getState();
+  return Object.fromEntries(ids.map((id) => [id, st.progress[id]?.status ?? st.items[id]?.status]));
+}
+
 export const actions = {
   resume: (ids: string[]) => {
-    const go = items(ids).filter((i) => canResume(i.status) || i.status === "queued").map((i) => i.id);
+    const go = actionableIds(ids, currentStatuses(ids), "resume");
     if (go.length) void attempt(api.startItems(go), t("Could not resume"));
   },
   pause: (ids: string[]) => {
-    const stop = items(ids).filter((i) => canPause(i.status)).map((i) => i.id);
+    const stop = actionableIds(ids, currentStatuses(ids), "pause");
     if (stop.length) void attempt(api.pauseItems(stop), t("Could not pause"));
   },
   toggle: (ids: string[]) => {
-    const list = items(ids);
-    if (list.some((i) => canPause(i.status))) actions.pause(ids);
+    const statuses = currentStatuses(ids);
+    if (actionableIds(ids, statuses, "pause").length) actions.pause(ids);
     else actions.resume(ids);
   },
   pauseAll: () => void attempt(api.pauseAll(), t("Could not stop downloads")),
@@ -38,10 +73,14 @@ export const actions = {
     }
     void actions.delete(ids, false, !(st.settings?.general.useTrash ?? true));
   },
-  delete: async (ids: string[], deleteFiles: boolean, permanent: boolean) => {
-    await attempt(api.deleteItems(ids, deleteFiles, permanent), t("Could not delete"));
-    useApp.getState().select([]);
-  },
+  delete: (ids: string[], deleteFiles: boolean, permanent: boolean) =>
+    deleteAndPreserveSelection(
+      ids,
+      () => api.deleteItems(ids, deleteFiles, permanent),
+      () => useApp.getState().selection,
+      (selection) => useApp.getState().select(selection),
+      (error) => toast(t("Could not delete"), { kind: "error", body: error instanceof Error ? error.message : String(error) }),
+    ),
   restore: async (ids: string[]) => {
     const unfinished = items(ids).filter((i) => i.status !== "completed").length;
     try {
@@ -72,7 +111,7 @@ export const actions = {
   activate: (id: string) => {
     const it = useApp.getState().items[id];
     if (!it) return;
-    if (it.status === "completed") actions.open(id);
+    if ((useApp.getState().progress[id]?.status ?? it.status) === "completed") actions.open(id);
     else actions.details(id);
   },
 

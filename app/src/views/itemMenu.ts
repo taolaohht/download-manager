@@ -24,7 +24,8 @@ export function itemMenu(ids: string[]): MenuEntry[] {
     ];
   }
 
-  const done = one?.status === "completed";
+  const statusOf = (item: (typeof list)[number]) => st.progress[item.id]?.status ?? item.status;
+  const done = one ? statusOf(one) === "completed" : false;
   const inQueue = list.some((i) => i.queueId);
   const queueEntries: MenuEntry[] = [
     ...st.queues.map((q) => ({
@@ -71,8 +72,8 @@ export function itemMenu(ids: string[]): MenuEntry[] {
     { label: t("Show in folder"), icon: "folder-open", disabled: !one, onSelect: () => one && actions.reveal(one.id) },
     ...tools,
     { separator: true },
-    { label: t("Resume"), icon: "resume", disabled: !list.some((i) => canResume(i.status) || i.status === "queued"), onSelect: () => actions.resume(ids) },
-    { label: t("Pause"), icon: "pause", kbd: "Space", disabled: !list.some((i) => canPause(i.status)), onSelect: () => actions.pause(ids) },
+    { label: t("Resume"), icon: "resume", disabled: !list.some((i) => canResume(statusOf(i)) || statusOf(i) === "queued"), onSelect: () => actions.resume(ids) },
+    { label: t("Pause"), icon: "pause", kbd: "Space", disabled: !list.some((i) => canPause(statusOf(i))), onSelect: () => actions.pause(ids) },
     { label: t("Redownload"), icon: "retry", disabled: !one, onSelect: () => one && actions.redownload(one.id) },
     { label: t("Refresh download address…"), icon: "refresh-url", disabled: !one || done, onSelect: () => one && ui.openDialog({ kind: "refreshUrl", id: one.id }) },
     { label: t("Speed limit…"), icon: "speed-limiter", onSelect: () => ui.openDialog({ kind: "speedLimit", ids }) },

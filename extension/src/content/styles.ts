@@ -39,7 +39,7 @@ export const VIDEO_BUTTON_CSS = `
 .pill[aria-expanded="true"] .chev { transform: rotate(180deg); }
 .pill.done { border-color: rgba(79,224,163,.55); }
 .pill.err { border-color: rgba(255,107,139,.6); }
-.prism-mark { display: block; filter: drop-shadow(0 0 6px rgba(150,170,255,.35)); }
+.brand-mark { display: block; border-radius: 4px; object-fit: contain; }
 .menu {
   position: absolute; right: 0; top: 38px;
   width: 300px; max-height: 340px; overflow: auto;

@@ -1,4 +1,4 @@
-//! Prism native messaging host.
+//! 12e Downloader native messaging host.
 //!
 //! This crate is both:
 //!
@@ -29,7 +29,7 @@ pub mod ipc;
 pub const HOST_NAME: &str = "dev.prism.host";
 
 /// Human readable description written into the host manifest.
-pub const HOST_DESCRIPTION: &str = "Prism download manager browser integration";
+pub const HOST_DESCRIPTION: &str = "12e Downloader browser integration";
 
 /// Stable ID of the unpacked/dev Chromium extension. It is derived from the
 /// public key embedded in `extension/manifest` (`key`), see `extension/README.md`.
@@ -55,14 +55,14 @@ pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 /// File name of the host executable for the current platform.
 #[cfg(windows)]
-pub const HOST_BINARY_NAME: &str = "prism-native-host.exe";
+pub const HOST_BINARY_NAME: &str = "12e-native-host.exe";
 /// File name of the host executable for the current platform.
 #[cfg(not(windows))]
-pub const HOST_BINARY_NAME: &str = "prism-native-host";
+pub const HOST_BINARY_NAME: &str = "12e-native-host";
 
 /// File name of the app executable the host launches (it lives next to the host).
 #[cfg(windows)]
-pub const APP_BINARY_NAME: &str = "prism.exe";
+pub const APP_BINARY_NAME: &str = "12e-downloader.exe";
 /// File name of the app executable the host launches (it lives next to the host).
 #[cfg(not(windows))]
-pub const APP_BINARY_NAME: &str = "prism";
+pub const APP_BINARY_NAME: &str = "12e-downloader";
