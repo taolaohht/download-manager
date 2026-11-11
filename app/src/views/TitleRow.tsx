@@ -98,8 +98,8 @@ export function TitleRow() {
           { value: "active", label: t("Active"), count: stats.byFilter.active },
           { value: "queues", label: t("Queues"), count: stats.byFilter.queues },
           { value: "queued", label: t("Waiting"), count: stats.byFilter.queued },
-          { value: "completed", label: t("Completed"), count: stats.byFilter.completed },
-          { value: "failed", label: t("Failed"), count: stats.byFilter.failed },
+          { value: "completed", label: t("Done"), count: stats.byFilter.completed },
+          { value: "failed", label: t("Fail"), count: stats.byFilter.failed },
         ]}
       />
       <IconButton
