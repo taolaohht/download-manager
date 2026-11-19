@@ -27,6 +27,20 @@ let statuses = registration::register(&opts)?;           // Vec<BrowserStatus>
 //                 points_to_this_host, allowed, location, note }   (serde: camelCase)
 ```
 
+## Prism transition compatibility
+
+The browser-facing native host name `dev.prism.host`, the stable Chromium extension key/ID,
+and the Firefox add-on ID `prism@prismdl.site` are deliberately retained during the 12e
+migration. Existing Prism installations therefore keep their native-messaging registration and
+can be updated in place. The older Firefox ID `prism@prism.dev` remains allowlisted as well.
+Do not rename the host or rotate extension IDs as part of a visual rebrand; changing either
+requires a coordinated browser-extension and app migration.
+
+Chrome and Edge use the Chromium build. The Windows registration code writes each browser's
+native-messaging manifest/registry location while allowing the same stable Chromium ID. If a
+separate Edge Add-ons listing is introduced later, its store ID must be added to
+`RegisterOptions.chrome_extension_ids` before publishing that build.
+
 ## Location contract (the app core must match it)
 
 App data dir:

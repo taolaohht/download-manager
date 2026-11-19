@@ -1,14 +1,16 @@
 # 12e downloader browser extension
 
-One TypeScript source, two Manifest V3 builds:
+One TypeScript source, two Manifest V3 builds covering three browsers:
 
-| Build | Background | Download capture |
-|---|---|---|
-| `build/chromium/` (Chrome, Edge, Brave, Opera, Vivaldi, Chromium) | service worker | `downloads.onDeterminingFilename` (before the Save-As dialog) |
-| `build/firefox/` (Firefox ≥ 140, gecko id `prism@prismdl.site`) | event page (`background.scripts`) | blocking `webRequest.onHeadersReceived` for `Content-Disposition: attachment`, `downloads.onCreated` + cancel as backstop |
+| Build | Browsers | Background | Download capture |
+|---|---|---|---|
+| `build/chromium/` | Chrome + Edge (also Brave, Opera, Vivaldi, Chromium) | service worker | `downloads.onDeterminingFilename` (before the Save-As dialog) |
+| `build/firefox/` | Firefox ≥ 140 (gecko id `prism@prismdl.site`) | event page (`background.scripts`) | blocking `webRequest.onHeadersReceived` for `Content-Disposition: attachment`, `downloads.onCreated` + cancel as backstop |
+
+Edge uses the Chromium build. When installed from the Chrome Web Store, it keeps the same stable Chromium extension ID; the app registers the native host in Edge's own browser location as well. A separately published Edge Add-ons listing may have a different ID and must be added to the host allowlist before that distribution is enabled.
 
 **Stable Chromium extension ID: `mmcdeiglkbfbicdjboocmhehodogilfl`** (from the public key in
-`keys/`, see `keys/README.md`). The native host allows this origin by default.
+`keys/`, see `keys/README.md`). The native host allows this origin by default. The Firefox add-on ID and native host name are intentionally retained from Prism during the migration window, so existing Prism installations continue to connect and receive updates. Do not rotate these IDs or rename `dev.prism.host` until a coordinated migration path is ready.
 
 ## Build, test, install
 
