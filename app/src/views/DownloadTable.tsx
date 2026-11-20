@@ -17,7 +17,7 @@ import { EmptyState } from "./EmptyState";
 import { itemMenu } from "./itemMenu";
 import { useVisibleIds } from "./useListing";
 
-const ROW = { comfortable: 44, compact: 30 } as const;
+const ROW = { comfortable: 54, compact: 36 } as const;
 
 export function DownloadTable() {
   const ids = useVisibleIds();
@@ -332,7 +332,7 @@ const Row = memo(function Row({ id, index, top, cols, selected, fresh, compact, 
         </button>
       </div>
       <div className="row-actions" onMouseDown={(e) => e.stopPropagation()} onDoubleClick={(e) => e.stopPropagation()}>
-        {item.status === "completed" ? (
+        {status === "completed" ? (
           <IconButton icon="open-file" label={t("Open")} size={16} onClick={() => actions.open(id)} />
         ) : canPause(status) ? (
           <IconButton icon="pause" label={t("Pause")} size={16} onClick={() => actions.pause([id])} />

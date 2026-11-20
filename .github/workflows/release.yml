@@ -1,6 +1,7 @@
 name: Windows portable release
 
 on:
+  pull_request:
   push:
     branches: [main]
     tags: ["v*"]
@@ -49,11 +50,11 @@ jobs:
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         run: |
           $version = (Get-Content app/src-tauri/tauri.conf.json | ConvertFrom-Json).version
-          $zip = "packaging/out/Prism-$version-windows-x64-portable.zip"
+          $zip = "packaging/out/12e-Downloader-$version-windows-x64-portable.zip"
           npx --prefix app tauri signer sign --app-version $version $zip
       - uses: actions/upload-artifact@v5
         with:
-          name: prism-windows-x64-portable
+          name: 12e-downloader-windows-x64-portable
           path: |
             packaging/out/*.zip
             packaging/out/*.zip.sig
@@ -72,7 +73,7 @@ jobs:
           persist-credentials: false
       - uses: actions/download-artifact@v5
         with:
-          name: prism-windows-x64-portable
+          name: 12e-downloader-windows-x64-portable
           path: artifacts
       - name: Prepare portable release and update manifest
         shell: pwsh

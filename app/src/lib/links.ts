@@ -2,7 +2,7 @@
 
 import { inTauri } from "./api";
 
-/** Prism on GitHub. */
+/** 12e Downloader source repository. */
 export const REPO_URL = "https://github.com/taolaohht/download-manager";
 
 export async function openUrl(url: string) {

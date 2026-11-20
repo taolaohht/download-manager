@@ -1,5 +1,5 @@
 import { api, sendInternal } from '../shared/api';
-import { icons, prismMark } from '../shared/icons';
+import { icons, brandMark } from '../shared/icons';
 import { type MediaItem, humanSize } from '../shared/media';
 import type { ActionResult, ConnectionInfo, PopupState } from '../shared/messages';
 import type { BatchKind } from '../shared/protocol';
@@ -37,15 +37,15 @@ function chip(c: ConnectionInfo): string {
 function alertCard(c: ConnectionInfo): string {
   if (c.state === 'connected' || c.state === 'unknown') return '';
   const missing = c.state === 'host_missing';
-  const title = missing ? 'Browser integration isn’t installed' : 'Prism isn’t reachable';
+  const title = missing ? 'Browser integration isn’t installed' : '12e Downloader isn’t reachable';
   const hint = missing
-    ? 'Fix: open Prism › Settings › Browser integration and click Repair.'
-    : 'Start Prism, or open Prism › Settings › Browser integration › Repair. Downloads stay in the browser meanwhile.';
+    ? 'Fix: open 12e Downloader › Settings › Browser integration and click Repair.'
+    : 'Start 12e Downloader, or open 12e Downloader › Settings › Browser integration › Repair. Downloads stay in the browser meanwhile.';
   return `<section class="alert glass" id="fix">
     <span class="ic">${icons.alert(18)}</span><b>${title}</b>
     <p>${hint}${c.error ? `<br><span class="small">Details: ${esc(c.error)}</span>` : ''}</p>
     <div class="actions">
-      ${missing ? '' : `<button class="btn primary" data-act="launch">${icons.external(14)}Start Prism</button>`}
+      ${missing ? '' : `<button class="btn primary" data-act="launch">${icons.external(14)}Start 12e Downloader</button>`}
       <button class="btn" data-act="retry">${icons.refresh(14)}Retry</button>
     </div>
   </section>`;
@@ -68,14 +68,14 @@ function render(): void {
   const capturing = st.settings.captureEnabled && !st.paused;
   app.innerHTML = `
     <header class="top">
-      <span class="tile">${prismMark(24)}</span>
-      <div class="brand"><b>Prism</b><span class="muted">Download manager</span></div>
+      <span class="tile">${brandMark(24)}</span>
+      <div class="brand"><b>12e Downloader</b><span class="muted">Download manager</span></div>
       ${chip(connection)}
     </header>
     ${alertCard(connection)}
     <section class="row glass">
       <div class="tx"><b>Capture downloads</b><span>${
-        !st.settings.captureEnabled ? 'Disabled in settings' : st.paused ? 'Paused — the browser downloads files itself' : 'Matching files open in Prism'
+        !st.settings.captureEnabled ? 'Disabled in settings' : st.paused ? 'Paused — the browser downloads files itself' : 'Matching files open in 12e Downloader'
       }</span></div>
       <label class="switch" title="Pause capture"><input type="checkbox" id="capture" ${capturing ? 'checked' : ''} ${
         st.settings.captureEnabled ? '' : 'disabled'
@@ -103,7 +103,7 @@ function render(): void {
       <button class="btn" data-act="collect" data-mode="videos">${icons.film(18)}All videos</button>
     </section>
     <footer class="foot">
-      <button class="btn ghost" data-act="open">${prismMark(16)}Open Prism</button>
+      <button class="btn ghost" data-act="open">${brandMark(16)}Open 12e Downloader</button>
       <span class="spacer"></span>
       <button class="btn ghost icon" data-act="options" title="Options" aria-label="Options">${icons.gear(16)}</button>
     </footer>`;
@@ -139,11 +139,11 @@ async function act(el: HTMLElement): Promise<void> {
     switch (a) {
       case 'media':
         r = await sendInternal<ActionResult>({ kind: 'downloadMedia', tabId, key: el.dataset.key! });
-        if (r?.ok) toast('Sent to Prism');
+        if (r?.ok) toast('Sent to 12e Downloader');
         break;
       case 'collect':
         r = await sendInternal<ActionResult>({ kind: 'collect', tabId, mode: el.dataset.mode as BatchKind });
-        if (r?.ok) toast(r.count ? `Sent ${r.count} item${r.count === 1 ? '' : 's'} to Prism` : 'Nothing found on this page');
+        if (r?.ok) toast(r.count ? `Sent ${r.count} item${r.count === 1 ? '' : 's'} to 12e Downloader` : 'Nothing found on this page');
         break;
       case 'open':
       case 'launch':
@@ -159,7 +159,7 @@ async function act(el: HTMLElement): Promise<void> {
         break;
     }
     if (r && !r.ok) toast(r.error ?? 'Something went wrong', true);
-    if (!r) toast('Prism extension is restarting — try again', true);
+    if (!r) toast('12e Downloader extension is restarting — try again', true);
   } finally {
     busy = false;
     (el as HTMLButtonElement).disabled = false;

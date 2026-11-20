@@ -7,11 +7,9 @@ use tauri::{AppHandle, Manager};
 /// The host executable shipped next to the app binary.
 pub fn bundled_host_path() -> PathBuf {
     let exe = std::env::current_exe().unwrap_or_default();
-    let name = if cfg!(windows) {
-        "prism-native-host.exe"
-    } else {
-        "prism-native-host"
-    };
+    // Keep the shipped filename in sync with the portable packager. The host's
+    // *registration name* remains dev.prism.host for Prism-era extension compatibility.
+    let name = prism_native_host::HOST_BINARY_NAME;
     exe.parent()
         .map(|d| d.join(name))
         .unwrap_or_else(|| PathBuf::from(name))
@@ -24,7 +22,7 @@ pub fn host_path() -> PathBuf {
     let bundled = bundled_host_path();
     if let Some(appimage) = std::env::var_os("APPIMAGE") {
         let data = prism_core::paths::data_dir();
-        let stable = data.join("bin").join("prism-native-host");
+        let stable = data.join("bin").join(prism_native_host::HOST_BINARY_NAME);
         let copy = || -> std::io::Result<()> {
             std::fs::create_dir_all(data.join("bin"))?;
             let needs_copy = std::fs::metadata(&stable).map(|m| m.len()).ok()
@@ -294,9 +292,17 @@ fn copy_dir(src: &std::path::Path, dst: &std::path::Path) -> std::io::Result<()>
 
 #[cfg(test)]
 mod tests {
-    use super::{EXTENSION_STORE_URL, FIREFOX_ADDON_URL, store_url, sync_dir};
+    use super::{EXTENSION_STORE_URL, FIREFOX_ADDON_URL, bundled_host_path, store_url, sync_dir};
     use std::fs;
     use std::path::Path;
+
+    #[test]
+    fn bundled_host_uses_the_packaged_12e_binary_name() {
+        assert_eq!(
+            bundled_host_path().file_name().unwrap(),
+            std::ffi::OsStr::new(prism_native_host::HOST_BINARY_NAME),
+        );
+    }
 
     #[test]
     fn firefox_and_zen_get_firefox_add_ons() {

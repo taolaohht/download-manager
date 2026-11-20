@@ -22,7 +22,7 @@ const codeOf = (e: unknown) => String(e instanceof Error ? e.message : e);
 function commonProblem(code: string): string {
   switch (code) {
     case "zip:protected":
-      return t("The server didn’t let Prism in. The download may need the browser’s sign-in.");
+      return t("The server didn’t let 12e Downloader in. The download may need the browser’s sign-in.");
     case "zip:changed":
       return t("The file on the server has changed. Close this window and add the download again.");
     case "zip:network":

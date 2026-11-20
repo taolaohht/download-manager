@@ -1,7 +1,7 @@
-# Building Prism (Windows x64 portable)
+# Building 12e Downloader (Windows x64 portable)
 
-Prism is released as a **Windows 10/11 x64 portable application only**. The release ZIP contains
-`prism.exe`, the native messaging host, browser extensions, and a `data` folder created on
+12e Downloader is released as a **Windows 10/11 x64 portable application only**. The release ZIP contains
+`12e-downloader.exe`, the native messaging host, browser extensions, and a `data` folder created on
 first launch. No installer is generated.
 
 ## Prerequisites
@@ -11,13 +11,13 @@ first launch. No installer is generated.
 | Rust | stable ≥ 1.88 | Install with rustup |
 | Node.js | 24 LTS | Builds the UI and browser extensions |
 | Windows | Windows 10/11 x64 | Visual Studio 2022 Build Tools with Desktop development with C++ and Windows SDK |
-| Optional | `ffmpeg.exe` on PATH | Otherwise Prism downloads a verified build on first video download |
+| Optional | `ffmpeg.exe` on PATH | Otherwise 12e Downloader downloads a verified build on first video download |
 
 ## Setup
 
 ```powershell
-git clone <repo> prism
-cd prism
+git clone <repo> 12e-downloader
+cd 12e-downloader
 npm ci --prefix app
 npm ci --prefix extension
 ```
@@ -48,7 +48,7 @@ cd ..
 ./scripts/make-portable.ps1 -Target x86_64-pc-windows-msvc
 ```
 
-The ZIP is written to `packaging/out/Prism-<version>-windows-x64-portable.zip`. It runs without
+The ZIP is written to `packaging/out/12e-Downloader-<version>-windows-x64-portable.zip`. It runs without
 an installer and stores settings, history, and download state in its own `data` folder.
 
 ## Continuous integration

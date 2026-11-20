@@ -77,7 +77,7 @@ function save(p: Persisted) {
   }
 }
 
-export type StatusFilter = "all" | "active" | "queued" | "completed" | "failed";
+export type StatusFilter = "all" | "active" | "queues" | "queued" | "completed" | "failed";
 
 interface UiState extends Persisted {
   filter: StatusFilter;

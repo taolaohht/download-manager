@@ -35,7 +35,7 @@ export const SECTIONS: { id: string; label: string; icon: IconName; group?: bool
   { id: "security", label: tk("Security & antivirus"), icon: "shield" },
   { id: "advanced", label: tk("Advanced"), icon: "options" },
   { id: "shortcuts", label: tk("Keyboard shortcuts"), icon: "list" },
-  { id: "about", label: tk("About Prism"), icon: "info" },
+  { id: "about", label: tk("About 12e Downloader"), icon: "info" },
 ];
 
 const save = (patch: DeepPartial<Settings>) => void patchSettings(patch);
@@ -98,9 +98,9 @@ function SectionBody({ id, s }: { id: string; s: Settings }) {
     case "general":
       return (
         <>
-          <p className="lead">{t("How Prism starts and behaves in the background.")}</p>
+          <p className="lead">{t("How 12e Downloader starts and behaves in the background.")}</p>
           <Group title={t("Language")}>
-            <Row title={t("Language")} hint={t("Prism follows your system's language unless you pick one here")}>
+            <Row title={t("Language")} hint={t("12e Downloader follows your system's language unless you pick one here")}>
               <Select
                 label={t("Language")}
                 value={s.general.language}
@@ -123,7 +123,7 @@ function SectionBody({ id, s }: { id: string; s: Settings }) {
             <Toggle title={t("Start minimized")} value={s.general.startMinimized} onChange={(v) => save({ general: { startMinimized: v } })} />
             <Toggle title={t("Close button hides to the tray")} hint={t("Downloads keep running; quit from the tray menu")} value={s.general.closeToTray} onChange={(v) => save({ general: { closeToTray: v } })} />
             {document.documentElement.dataset.os === "mac" && (
-              <Toggle title={t("Hide the Dock icon")} hint={t("While Prism waits in the menu bar. The icon is back while its window is open")} value={s.general.hideDockIcon} onChange={(v) => save({ general: { hideDockIcon: v } })} />
+              <Toggle title={t("Hide the Dock icon")} hint={t("While 12e Downloader waits in the menu bar. The icon is back while its window is open")} value={s.general.hideDockIcon} onChange={(v) => save({ general: { hideDockIcon: v } })} />
             )}
           </Group>
           <Group title={t("Windows")}>
@@ -144,7 +144,7 @@ function SectionBody({ id, s }: { id: string; s: Settings }) {
                 if (v) void api.removeDeletedFiles().catch(() => {});
               }}
             />
-            <Toggle title={t("Check for updates automatically")} hint={t("Prism asks before installing; it restarts by itself and your downloads continue")} value={s.general.checkUpdates} onChange={(v) => save({ general: { checkUpdates: v } })} />
+            <Toggle title={t("Check for updates automatically")} hint={t("12e Downloader asks before installing; it restarts by itself and your downloads continue")} value={s.general.checkUpdates} onChange={(v) => save({ general: { checkUpdates: v } })} />
           </Group>
           <Group title={t("Clipboard")}>
             <Toggle title={t("Watch the clipboard for links")} value={s.clipboard.monitor} onChange={(v) => save({ clipboard: { monitor: v } })} />
@@ -179,7 +179,7 @@ function SectionBody({ id, s }: { id: string; s: Settings }) {
             </Row>
           </Group>
           <Group title={t("Engine")}>
-            <Row title={t("Connections per download")} hint={t("Prism splits files into this many segments (work-stealing keeps all busy)")}>
+            <Row title={t("Connections per download")} hint={t("12e Downloader splits files into this many segments (work-stealing keeps all busy)")}>
               <NumberField value={s.downloads.defaultConnections} min={1} max={s.downloads.maxConnections} label={t("Connections per download")} onCommit={(v) => save({ downloads: { defaultConnections: v } })} width={90} />
             </Row>
             <Row title={t("Maximum connections")}>
@@ -215,7 +215,7 @@ function SectionBody({ id, s }: { id: string; s: Settings }) {
           <Row title={t("Read timeout")}>
             <NumberField value={s.connection.readTimeoutSecs} min={1} max={600} suffix="s" label={t("Read timeout")} onCommit={(v) => save({ connection: { readTimeoutSecs: v } })} width={90} />
           </Row>
-          <Row title={t("Connections per server")} hint={t("0 = no limit; Prism also learns limits servers enforce")}>
+          <Row title={t("Connections per server")} hint={t("0 = no limit; 12e Downloader also learns limits servers enforce")}>
             <NumberField value={s.connection.maxConnectionsPerHost} min={0} max={64} label={t("Connections per server")} onCommit={(v) => save({ connection: { maxConnectionsPerHost: v } })} width={90} />
           </Row>
           <Row title={t("User agent")} hint={t("Empty = a current Chrome user agent")}>
@@ -316,7 +316,7 @@ function SectionBody({ id, s }: { id: string; s: Settings }) {
       return (
         <>
           <Group title={t("Notifications")}>
-            <Toggle title={t("System notifications")} hint={t("When downloads finish or fail while Prism is in the background")} value={s.general.notifications} onChange={(v) => save({ general: { notifications: v } })} />
+            <Toggle title={t("System notifications")} hint={t("When downloads finish or fail while 12e Downloader is in the background")} value={s.general.notifications} onChange={(v) => save({ general: { notifications: v } })} />
           </Group>
           <Group title={t("Sounds")}>
             <Toggle title={t("Play sounds")} value={s.sounds.enabled} onChange={(v) => save({ sounds: { enabled: v } })} />
@@ -397,7 +397,7 @@ function SectionBody({ id, s }: { id: string; s: Settings }) {
 // ---- sections with more logic -------------------------------------------------------
 
 const ACCENTS = [
-  ["prism", "Prism", "#6461f2", "#5653ea"],
+  ["prism", "12e Downloader", "#6461f2", "#5653ea"],
   ["cyan", tk("Cyan"), "#36c5e6", "#0b7fa0"],
   ["emerald", tk("Emerald"), "#2fc489", "#087f53"],
   ["amber", tk("Amber"), "#f2b54a", "#a86200"],
@@ -414,7 +414,7 @@ function Appearance({ s }: { s: Settings }) {
   ] as const;
   return (
     <>
-      <p className="lead">{t("Changes apply instantly. Prism follows your system theme unless you pick one.")}</p>
+      <p className="lead">{t("Changes apply instantly. 12e Downloader follows your system theme unless you pick one.")}</p>
       <Group title={t("Theme")}>
         <div className="themes">
           {themes.map(([v, label, cls]) => (
@@ -567,7 +567,7 @@ export function IntegrationList({ status }: { status: IntegrationStatus | null }
             <Icon name="browser" size={18} className={b.installed ? "" : "text-tertiary"} />
             <div className="srow__txt">
               <div className="srow__t1">{b.name ?? b.browser}</div>
-              <div className="srow__t2">{!b.installed ? t("Not installed") : ok ? t("Native messaging host registered") : b.registered ? t("Registered for another Prism copy") : t("Not registered")}</div>
+              <div className="srow__t2">{!b.installed ? t("Not installed") : ok ? t("Native messaging host registered") : b.registered ? t("Registered for another 12e Downloader copy") : t("Not registered")}</div>
             </div>
             {b.installed && (
               <span className={`badge ${ok ? "badge--success" : "badge--warning"}`}>
@@ -587,13 +587,13 @@ function BrowserIntegration() {
   const live = useExtensionStatus();
   return (
     <>
-      <p className="lead">{t("The Prism extension hands downloads and videos to this app through a native messaging host.")}</p>
+      <p className="lead">{t("The 12e Downloader extension hands downloads and videos to this app through a native messaging host.")}</p>
       <div className={`banner ${status?.extensionConnected && !status.extensionOutdated ? "banner--ok" : "banner--warn"}`}>
         <Icon name={status?.extensionConnected && !status.extensionOutdated ? "status-completed" : "warning"} size={18} />
         <div>
           <b>
             {status?.extensionOutdated
-              ? t("The browser runs an older extension ({version}, Prism is {appVersion})", { version: status.extensionVersion ?? "", appVersion: status.appVersion ?? "" })
+              ? t("The browser runs an older extension ({version}, 12e Downloader is {appVersion})", { version: status.extensionVersion ?? "", appVersion: status.appVersion ?? "" })
               : status?.extensionConnected
                 ? `${t("Extension connected")}${status.extensionVersion ? ` · ${status.extensionVersion}` : ""}`
                 : t("Extension not seen recently")}
@@ -601,8 +601,8 @@ function BrowserIntegration() {
           <div className="t-small">
             {status?.extensionOutdated
               ? status.extensionInstallType === "development"
-                ? t("This one was added by hand and doesn't update by itself. Prism's extension is now in the Chrome Web Store: remove this one and add it from the store (steps below).")
-                : t("Browsers don't reload an unpacked extension's files by themselves. Click ↻ Reload next to Prism on the extensions page, or restart the browser; if it stays old, remove it and load it again from the folder below.")
+                ? t("This one was added by hand and doesn't update by itself. 12e Downloader's extension is now in the Chrome Web Store: remove this one and add it from the store (steps below).")
+                : t("Browsers don't reload an unpacked extension's files by themselves. Click ↻ Reload next to 12e Downloader on the extensions page, or restart the browser; if it stays old, remove it and load it again from the folder below.")
               : status?.lastSeen
                 ? t("Last message {date}", { date: formatDate(status.lastSeen) })
                 : t("Install the extension, then open any web page.")}
@@ -640,7 +640,7 @@ function Models({ s }: { s: Settings }) {
   return (
     <>
       <Group title={t("Hugging Face")}>
-        <Row title={t("Download a model")} hint={t("Find a model by its name, a link or a search. Prism picks the files worth downloading and they download one after another, each over many connections.")}>
+        <Row title={t("Download a model")} hint={t("Find a model by its name, a link or a search. 12e Downloader picks the files worth downloading and they download one after another, each over many connections.")}>
           <button type="button" className="btn" onClick={() => void attempt(api.openWindow("model"))}>
             <Icon name="model" size={15} /> {t("Open…")}
           </button>
@@ -775,7 +775,7 @@ function Video({ s }: { s: Settings }) {
             ]}
           />
         </Row>
-        <Toggle title={t("Accelerate with Prism’s engine")} hint={t("Multi-connection download of direct formats, then merge with ffmpeg")} value={s.video.accelerate} onChange={(v) => save({ video: { accelerate: v } })} />
+        <Toggle title={t("Accelerate with 12e Downloader’s engine")} hint={t("Multi-connection download of direct formats, then merge with ffmpeg")} value={s.video.accelerate} onChange={(v) => save({ video: { accelerate: v } })} />
         <Row title={t("Cookies from browser")} hint={t("Lets yt-dlp access age-restricted / member videos. On Windows, Chrome and Edge lock their cookies while open: Firefox works best")}>
           <Select
             label={t("Cookies from browser")}
@@ -791,7 +791,7 @@ function Video({ s }: { s: Settings }) {
         <Toggle title={t("Number playlist videos")} hint={t("Starts each file name with the video's position in the playlist: 01 - Title")} value={s.video.numberPlaylistVideos} onChange={(v) => save({ video: { numberPlaylistVideos: v } })} />
       </Group>
       <Group title={t("Custom tool paths")}>
-        <Row title="yt-dlp" hint={t("Empty = managed by Prism")}>
+        <Row title="yt-dlp" hint={t("Empty = managed by 12e Downloader")}>
           <TextField value={s.video.ytdlpPath} onCommit={(v) => save({ video: { ytdlpPath: v } })} label={t("yt-dlp path")} mono placeholder={t("Managed")} />
         </Row>
         <Row title="ffmpeg" hint={t("Empty = managed / system")}>
@@ -950,7 +950,7 @@ function About() {
   return (
     <div className="about">
       <BrandTile size={72} />
-      <h2>Prism</h2>
+      <h2>12e Downloader</h2>
       <p className="text-secondary">{t("Version {version}", { version })}</p>
       <div className="inline" style={{ justifyContent: "center" }}>
         <button type="button" className="btn" onClick={() => void checkForUpdates(true)}>
@@ -962,7 +962,7 @@ function About() {
       </div>
       <p className="lead">{t("One beam, many rays. A fast multi-connection download manager with browser integration, video downloading, queues, a scheduler and a site grabber.")}</p>
       <button type="button" className="linkbtn about__star" onClick={() => void openUrl(REPO_URL)}>
-        {t("Prism is open source. Star it on GitHub")}
+        {t("12e Downloader is open source. Star it on GitHub")}
       </button>
       <p className="t-small text-tertiary">{t("Inter and JetBrains Mono are used under the SIL Open Font License. yt-dlp, ffmpeg and librqbit are separate projects under their own licenses.")}</p>
     </div>

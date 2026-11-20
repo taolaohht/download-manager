@@ -84,7 +84,7 @@ const demoPath = (name: string) => `C:\\Users\\you\\Downloads\\${name}`;
 /**
  * Tools: convert pictures, music and videos into other formats, or make them smaller for a size
  * limit (Discord, e-mail, WhatsApp). Results go next to the originals; the jobs keep running in
- * Prism when the window closes.
+ * 12e Downloader when the window closes.
  */
 export default function ToolsWindow({ request }: { request: ToolsRequest }) {
   const saved = useMemo(remembered, []);
@@ -288,7 +288,7 @@ export default function ToolsWindow({ request }: { request: ToolsRequest }) {
               <Icon name={tab === "convert" ? "convert" : "shrink"} size={26} />
             </span>
             <b>{t("Drop pictures, music or videos here")}</b>
-            <span className="t-small text-tertiary">{tab === "convert" ? t("Or choose files. Several at once get the same format.") : t("Or choose files. Prism fits each one under the size you pick.")}</span>
+            <span className="t-small text-tertiary">{tab === "convert" ? t("Or choose files. Several at once get the same format.") : t("Or choose files. 12e Downloader fits each one under the size you pick.")}</span>
             <span className="btn btn--sm">
               <Icon name="folder-open" size={14} /> {t("Choose files…")}
             </span>
@@ -490,7 +490,7 @@ export default function ToolsWindow({ request }: { request: ToolsRequest }) {
       </div>
 
       <footer className="dialog__footer">
-        {ffmpegMissing && !fetching && <span className="t-small text-tertiary tools__note">{t("The first time, Prism downloads the converter (FFmpeg).")}</span>}
+        {ffmpegMissing && !fetching && <span className="t-small text-tertiary tools__note">{t("The first time, 12e Downloader downloads the converter (FFmpeg).")}</span>}
         <span className="spacer" />
         <button type="button" className="btn btn--ghost" onClick={() => void win.close()}>
           {t("Close")}

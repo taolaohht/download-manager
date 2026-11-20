@@ -14,7 +14,7 @@ import { BrowserConnect, useExtensionStatus } from "../BrowserConnect";
 type Change = { icon: IconName; title: string; body: string; credit?: string; action?: "sounds" | "language" | "appearance" | "model" | "tools" };
 
 /**
- * What this version brings (shown once after an update, and from About Prism), then what the
+ * What this version brings (shown once after an update, and from About 12e Downloader), then what the
  * version before brought, for people updating from older ones. Titles and bodies are translated
  * where they're shown; `credit` is the contributor's handle.
  */
@@ -28,7 +28,7 @@ const CHANGES: Change[] = [
   {
     icon: "video",
     title: tk("Just a part of a video"),
-    body: tk("Pick a quality with the Download button next to a video, or open the “Download video” window in Prism, and choose “Only a part”: where it starts and ends, or a chapter. Prism downloads only that part."),
+    body: tk("Pick a quality with the Download button next to a video, or open the “Download video” window in 12e Downloader, and choose “Only a part”: where it starts and ends, or a chapter. 12e Downloader downloads only that part."),
   },
   {
     icon: "file-archive",
@@ -52,13 +52,13 @@ const PREVIOUS = { version: "1.1.8", changes: [
   },
   {
     icon: "monitor",
-    title: tk("Prism on Linux"),
-    body: tk("On KDE Plasma, a window brought back from the taskbar no longer stays empty, and Prism gives memory back after long downloads."),
+    title: tk("12e Downloader on Linux"),
+    body: tk("On KDE Plasma, a window brought back from the taskbar no longer stays empty, and 12e Downloader gives memory back after long downloads."),
   },
   {
     icon: "eye",
     title: tk("Dock icon on the Mac"),
-    body: tk("Prism can hide its Dock icon while it waits in the menu bar: Settings › General."),
+    body: tk("12e Downloader can hide its Dock icon while it waits in the menu bar: Settings › General."),
     credit: "mehdiillala",
   },
 ] satisfies Change[] };
@@ -76,7 +76,7 @@ export function WhatsNewSheet() {
       <header className="whatsnew__head">
         <BrandTile size={52} />
         <div>
-          <h2>{t("Prism {version} is here", { version })}</h2>
+          <h2>{t("12e Downloader {version} is here", { version })}</h2>
           <p className="text-secondary">{t("Convert and make smaller, just a part of a video, and a look inside ZIP files.")}</p>
         </div>
       </header>
@@ -85,9 +85,9 @@ export function WhatsNewSheet() {
         <div className="whatsnew__storehead">
           <Icon name="puzzle" size={18} className="text-accent" />
           <div>
-            <b>{t("Add Prism to your browser in one click")}</b>
+            <b>{t("Add 12e Downloader to your browser in one click")}</b>
             <div className="t-small text-secondary">
-              {t("From the Chrome Web Store, for Chrome, Edge, Brave, Opera, Vivaldi and Helium. It updates by itself, so there's nothing to reload after a Prism update.")}
+              {t("From the Chrome Web Store, for Chrome, Edge, Brave, Opera, Vivaldi and Helium. It updates by itself, so there's nothing to reload after a 12e Downloader update.")}
             </div>
           </div>
         </div>
@@ -97,7 +97,7 @@ export function WhatsNewSheet() {
               <Icon name="check" size={16} strokeWidth={2.4} />
             </span>
             <div>
-              <b>{t("You're all set.")}</b> {t("Your browser runs Prism from the Chrome Web Store.")}
+              <b>{t("You're all set.")}</b> {t("Your browser runs 12e Downloader from the Chrome Web Store.")}
             </div>
           </div>
         ) : (
@@ -106,12 +106,12 @@ export function WhatsNewSheet() {
       </section>
 
       <ChangeList changes={CHANGES} />
-      <h3 className="whatsnew__older t-small text-tertiary">{t("New in Prism {version}", { version: PREVIOUS.version })}</h3>
+      <h3 className="whatsnew__older t-small text-tertiary">{t("New in 12e Downloader {version}", { version: PREVIOUS.version })}</h3>
       <ChangeList changes={PREVIOUS.changes} />
       <p className="whatsnew__star t-small text-secondary">
         <Icon name="star" size={14} className="text-accent" />
         <span>
-          {t("Enjoying Prism? A star on GitHub helps more people find it.")}{" "}
+          {t("Enjoying 12e Downloader? A star on GitHub helps more people find it.")}{" "}
           <button type="button" className="linkbtn" onClick={() => void openUrl(REPO_URL)}>
             {t("Star on GitHub")}
           </button>
@@ -169,7 +169,7 @@ function ChangeList({ changes }: { changes: Change[] }) {
 }
 
 /**
- * Opens "What's new" once after Prism was updated, when the main window is on screen (not while
+ * Opens "What's new" once after 12e Downloader was updated, when the main window is on screen (not while
  * it starts hidden in the tray). A fresh install shows the onboarding instead and only records
  * the version.
  */

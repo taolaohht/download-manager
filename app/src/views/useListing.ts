@@ -7,7 +7,7 @@ import { type StatusFilter, useUi } from "../lib/ui";
 /** Ordered ids for the sidebar view + title-row status filter + search. */
 export function listIds(s: AppState, filter: StatusFilter): string[] {
   const list = visibleItems(s);
-  return (filter === "all" ? list : list.filter((i) => matchesFilter(s.progress[i.id]?.status ?? i.status, filter))).map((i) => i.id);
+  return (filter === "all" ? list : list.filter((i) => matchesFilter(s.progress[i.id]?.status ?? i.status, filter, i.queueId))).map((i) => i.id);
 }
 
 /** Same as listIds, re-rendering only when the ordered list actually changes. */

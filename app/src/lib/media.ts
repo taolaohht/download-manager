@@ -218,7 +218,7 @@ export function problemText(p: MediaProblem, ctx?: { size?: number; target?: Med
     case "noSpace":
       return t("The disk is full.");
     case "access":
-      return t("Prism can’t save next to the original (no permission).");
+      return t("12e Downloader can’t save next to the original (no permission).");
     case "missing":
       return t("The file isn’t there any more.");
     case "encoder":

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { handleEvent, useApp } from "./store";
+import { counts, handleEvent, useApp, visibleItems } from "./store";
 import type { DownloadItem, Progress, Status } from "./types";
 
 const item = (status: Status): DownloadItem => ({
@@ -48,5 +48,42 @@ describe("live progress (#41)", () => {
     handleEvent({ type: "itemsAdded", payload: [item("completed")] });
     expect(useApp.getState().progress.a).toBeUndefined();
     expect(useApp.getState().items.a.status).toBe("completed");
+  });
+});
+
+describe("live status in views and counts", () => {
+  it("uses the latest progress status for sidebar views and counters", () => {
+    const completed = { ...item("completed"), id: "b", fileName: "done.zip" };
+    const state = {
+      ...useApp.getState(),
+      items: { a: item("paused"), b: completed },
+      progress: { a: progress(400) },
+      view: { kind: "status" as const, id: "active" as const },
+      search: "",
+      sort: { key: "status" as const, dir: 1 as const },
+    };
+
+    expect(visibleItems(state).map((x) => x.id)).toEqual(["a"]);
+    expect(counts(state)).toMatchObject({
+      all: 2,
+      unfinished: 1,
+      finished: 1,
+      active: 1,
+      failed: 0,
+    });
+  });
+
+  it("sorts by the live status rather than a stale item snapshot", () => {
+    const paused = { ...item("paused"), id: "b", fileName: "paused.zip" };
+    const state = {
+      ...useApp.getState(),
+      items: { a: item("paused"), b: paused },
+      progress: { a: progress(400) },
+      view: { kind: "all" as const },
+      search: "",
+      sort: { key: "status" as const, dir: -1 as const },
+    };
+
+    expect(visibleItems(state).map((x) => x.id)).toEqual(["b", "a"]);
   });
 });
