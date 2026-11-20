@@ -75,3 +75,24 @@ jobs:
         run: npx --prefix extension playwright install chromium
       - name: Run extension E2E
         run: npm run e2e --prefix extension
+
+  extension-firefox:
+    name: Firefox extension package validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Install extension dependencies
+        run: npm ci --prefix extension
+      - name: Build Chromium and Firefox packages
+        run: npm run build --prefix extension
+      - name: Extension typecheck and unit tests
+        run: |
+          npm run typecheck --prefix extension
+          npm test --prefix extension
+      - name: Validate Firefox package with Mozilla web-ext
+        run: npx --yes web-ext@8.9.0 lint --source-dir extension/build/firefox --warnings-as-errors
